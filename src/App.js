@@ -2,6 +2,7 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import TextComponent from './components/TextComponent';
+import Contact from './components/Contact'; // Import the Contact component
 import logo from './logo/Group 1190.svg';
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
         style={{
           position: 'absolute', 
           right: '0', 
-          top: '0', 
+          top: '-2000', 
           width: '877.995px', 
           height: '575.704px', 
           flexShrink: 0,
@@ -29,10 +30,11 @@ function App() {
         }} 
       />
 
-      <div className="flex flex-col h-screen z-10 relative"> {/* Set higher z-index to 10 for the text component */}
+      <div className="flex flex-col h-screen z-10 relative">
         <Navbar />
-        <div className="flex-1 flex items-center justify-center">
-        <TextComponent text1="Developing intelligent, seamless "  text2=" software."  subText="Innovation leaps from student's code."/>
+        <div className="flex-1 flex flex-col items-center justify-center"> {/* Use flex-col here */}
+          <TextComponent text1="Developing intelligent, seamless "  text2=" software."  subText="Innovation leaps from student's code."/>
+          
         </div>
       </div>
     </div>

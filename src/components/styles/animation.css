@@ -1,0 +1,36 @@
+/* src/styles/animations.css */
+@keyframes jumpIn {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-jump-in {
+  animation-name: jumpIn;
+}
+
+.animate-once {
+  animation-iteration-count: 1;
+}
+
+.animate-duration-1000 {
+  animation-duration: 1s;
+}
+.animate-duration-2000 {
+  animation-duration: 2s;
+}
+.animate-duration-3000 {
+  animation-duration: 3s;
+}
+
+.animate-delay-300 {
+  animation-delay: 300ms;
+}
+.contact-button:hover {
+  background-color: #ffffff; /* Change color on hover */
+}
