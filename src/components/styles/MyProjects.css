@@ -1,0 +1,17 @@
+/* src/components/MyProjects.css */
+.my-text {
+    color: #75717D;
+    font-family: 'Inter', sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  
+  .projects-text {
+    color: #1F1E60;
+    font-family: 'Inter', sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  
