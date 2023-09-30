@@ -1,5 +1,6 @@
 // src/components/Contact.js
 import React from 'react';
+import './styles/contact.css'
 import './styles/animation.css'; // Or the path to your CSS file
 
 const Contact = () => {
@@ -15,7 +16,6 @@ const Contact = () => {
       backgroundColor: 'transparent', // Set initial background color to transparent
       cursor: 'pointer', // Change cursor to pointer on hover
       outline: 'none', // Remove outline
-      transition: 'background-color 0.7s ease-in-out', // Add transition effect for background-color
     }}
    
   >

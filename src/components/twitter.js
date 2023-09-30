@@ -1,7 +1,6 @@
 // src/components/Contact.js
 import React from 'react';
-import './styles/animation.css'; // Or the path to your CSS file
-
+import './styles/contact.css'
 const Twitter = () => {
   return (
     <button
@@ -15,7 +14,6 @@ const Twitter = () => {
       backgroundColor: 'transparent', // Set initial background color to transparent
       cursor: 'pointer', // Change cursor to pointer on hover
       outline: 'none', // Remove outline
-      transition: 'background-color 0.7s ease-in-out', // Add transition effect for background-color
     }}
    
   >

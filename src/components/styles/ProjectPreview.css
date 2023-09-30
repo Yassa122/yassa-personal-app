@@ -1,0 +1,44 @@
+/* ProjectPreview.css */
+.project-container {
+    width: 100%;
+    max-width: 460px; /* Default max-width for larger screens */
+    transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out; /* Add transition here */
+
+  }
+  
+  .project-container:hover {
+    transform: scale(1.05); /* Scale the element up to 105% when hovered */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Add shadow when hovered */
+  }
+  
+  .project-description {
+    width: 390px;
+    color: #FFF;
+    font-family: 'Inter';
+    font-size: 10px;
+    font-weight: 300;
+  }
+  
+  .project-title {
+    width: 187px;
+    height: 13px;
+    color: #FFF;
+    font-family: 'Inter';
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  
+  /* Media query for screens smaller than 767px */
+  @media (max-width: 767px) {
+    .project-text {
+        word-wrap: break-word;
+        padding-right: 10px;
+
+      }
+      
+    .project-container {
+      max-width: 350px; /* Adjusted max-width for smaller screens */
+    }
+  }
+  

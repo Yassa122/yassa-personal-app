@@ -12,10 +12,22 @@
   width: 100%;
   height: auto;
 }
+/* App.css */
+.logo.hovered {
+  transform: scale(1.1) rotate(5deg); /* This will scale the logo to 110% and rotate it 5 degrees */
+  transition: all 0.5s ease-in-out; /* This will ensure the transformation takes half a second with an ease-in-out timing function */
+}
+
+
+
 
 @media (max-width: 600px) {
   .logo-container {
     width: 100px;
     max-height: 50px;
   }
+}
+
+.mySvgClass {
+  animation: spin 2s linear infinite;
 }

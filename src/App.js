@@ -4,7 +4,8 @@ import Navbar from './components/Navbar';
 import TextComponent from './components/TextComponent';
 import logo from './logo/Group 1190.svg';
 import MyProjects from './components/myProjects';
-
+import ProjectPreview from './components/ProjectPreview';
+import preview from'./logo/CairoMetroImg.png';
 function App() {
   return (
     <div
@@ -42,6 +43,15 @@ function App() {
           />
           {/* Added "My Projects" text here */}
           <MyProjects/>
+          <div className="lg:ml-[-780px] lg:mt-[50px] mt-[20px]">
+          <ProjectPreview
+              imageUrl={preview}
+              projectLink="https://cairometrosystem.onrender.com/"
+              title="Cairo metro reservation tickets"
+              description="The Cairo Metro Reservation Ticket Website streamlines ticket booking and management for Cairo's Metro system, offering real-time updates, secure transactions, and personalized user accounts."
+            />
+          </div>
+
         </div>
       </div>
     </div>

@@ -1,5 +1,16 @@
 a {
-    background:
+    position: relative;
+    transition: all 400ms 200ms; /* duration and delay */
+  }
+  
+  a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: 
       linear-gradient(
         to right,
         rgb(100, 128, 126),
@@ -10,14 +21,21 @@ a {
         rgba(255, 0, 0, 1),
         rgba(255, 0, 180, 1),
         rgba(0, 100, 200, 1)
-    );
+      );
     background-size: 100% 3px, 0 3px;
     background-position: 100% 100%, 0 100%;
     background-repeat: no-repeat;
-    transition: background-size 400ms;
+    opacity: 1;
+    transition: opacity 400ms, background-size 400ms 200ms;
   }
+  
+  a:hover::after {
+    opacity: 0;
+    background-size: 0 3px, 100% 3px;
+  }
+  
   /* navbar.css */
-ul {
+  ul {
     padding: 0;
     margin: 0;
   }

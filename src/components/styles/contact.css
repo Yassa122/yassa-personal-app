@@ -1,0 +1,11 @@
+/* contact.css */
+.contact-button {
+    /* other styles */
+    transition: all 0.5s ease-in-out; /* Apply the transition to all properties, with a duration of 0.5s and using the ease-in-out timing function */
+  }
+  
+  .contact-button:hover {
+    transform: scale(1.1); /* Scale the button up to 110% when hovered */
+    opacity: 0.9; /* Reduce the opacity to 90% when hovered */
+  }
+  
