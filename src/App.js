@@ -1,16 +1,38 @@
 // src/App.js
-import React from 'react';
 import Navbar from './components/Navbar';
 import TextComponent from './components/TextComponent';
 import logo from './logo/Group 1190.svg';
 import MyProjects from './components/myProjects';
 import ProjectPreview from './components/ProjectPreview';
 import preview from'./logo/CairoMetroImg.png';
+import './App.css';
+import React, { useEffect, useState } from 'react';
+
 function App() {
+  const [minHeight, setMinHeight] = useState('180vh');
+
+  // Handler to set minHeight based on window width
+  const handleResize = () => {
+    if (window.innerWidth <= 700) {
+      setMinHeight('320vh');
+    } else {
+      setMinHeight('150vh');
+    }
+  };
+
+  // Set initial minHeight and add resize event listener on mount
+  useEffect(() => {
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup event listener on unmount
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div
       style={{
-        minHeight: '180vh',
+        minHeight: minHeight, // using the state variable here
         background: 'linear-gradient(to bottom right, #070547, #020004, #1B033A)',
       }}
       className="App relative"

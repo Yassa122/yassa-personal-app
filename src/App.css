@@ -1,3 +1,28 @@
+
+.app {
+  background: linear-gradient(to bottom right, #070547, #020004, #1B033A);
+}
+
+/* Default styles for laptop/desktop */
+.app {
+  minHeight: 180vh;
+}
+
+/* Mobile styles in Portrait mode */
+@media (max-width: 768px) and (orientation: portrait) {
+  .app {
+    minHeight: 300vh;
+  }
+}
+
+/* Mobile styles in Landscape mode */
+@media (max-width: 768px) and (orientation: landscape) {
+  .app {
+    minHeight: 320vh;
+  }
+}
+
+
 .logo-container {
   position: absolute;
   top: 0;

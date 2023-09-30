@@ -15,7 +15,7 @@ const Navbar = () => {
           <div>
             <ul className="flex space-x-4">
               <li>
-                <a href="/home" className="transition-colors duration-500 ease-in-out">Home</a>
+                <a href="/" className="transition-colors duration-500 ease-in-out">Home</a>
               </li>
               <li>
                 <a href="/projects" className="transition-colors duration-500 ease-in-out">Projects</a>
