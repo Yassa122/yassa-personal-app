@@ -23,9 +23,13 @@ function App() {
           right: '0', 
           top: '-2000', 
           width: '877.995px', 
-          height: '575.704px', 
+          height: '595.704px', 
           flexShrink: 0,
-          maxWidth: '100%',
+          maxWidth: '65%',
+          maxHeight: '100%',
+
+          minHeight: '100%',
+          
           zIndex: 1 // Set z-index to 1 for the logo
         }} 
       />
