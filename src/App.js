@@ -13,8 +13,8 @@ function App() {
 
   // Handler to set minHeight based on window width
   const handleResize = () => {
-    if (window.innerWidth <= 900) {
-      setMinHeight('320vh');
+    if (window.innerWidth <= 1000) {
+      setMinHeight('300vh');
     } else {
       setMinHeight('150vh');
     }
