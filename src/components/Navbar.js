@@ -6,9 +6,9 @@ import './styles/navbar.css'; // Import the CSS file
 
 const Navbar = () => {
   return (
-    <nav className="text-white p-4">
-      <div className="container mx-auto lg:px-16 xl:px-32"> {/* Adjusted padding for container */}
-        <div className="flex justify-between">
+    <nav className="text-white p-4 sticky top-0 w-full backdrop-blur">
+      <div className="container mx-auto lg:px-16 xl:px-32  "> {/* Adjusted padding for container */}
+        <div className="flex justify-between ">
           <div className="text-2xl">
             <a href="/" className="transition-colors duration-500 ease-in-out">Yassa</a>
           </div>
