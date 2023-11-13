@@ -9,12 +9,12 @@ import './App.css';
 import React, { useEffect, useState } from 'react';
 
 function App() {
-  const [minHeight, setMinHeight] = useState('180vh');
+  const [minHeight, setMinHeight] = useState('220vh');
 
   // Handler to set minHeight based on window width
   const handleResize = () => {
     if (window.innerWidth <= 1000) {
-      setMinHeight('200vh');
+      setMinHeight('230vh');
     } else {
       setMinHeight('200vh');
     }
