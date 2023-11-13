@@ -14,9 +14,9 @@ function App() {
   // Handler to set minHeight based on window width
   const handleResize = () => {
     if (window.innerWidth <= 1000) {
-      setMinHeight('300vh');
+      setMinHeight('180vh');
     } else {
-      setMinHeight('150vh');
+      setMinHeight('200vh');
     }
   };
 
@@ -30,7 +30,9 @@ function App() {
   }, []);
 
   return (
+    
     <div
+    
       style={{
         minHeight: minHeight, // using the state variable here
         background: 'linear-gradient(to bottom right, #070547, #020004, #1B033A)',
@@ -55,16 +57,23 @@ function App() {
       />
 
       <div className="flex flex-col h-screen z-10 relative">
-        <Navbar />
+
+
         <div className="flex-1 flex flex-col items-center justify-center">
+
+        <Navbar/>
+
           {/* Use flex-col here */}
           <TextComponent
+          
             text1="Developing intelligent, seamless "
             text2=" software."
             subText="Innovation leaps from student's code."
           />
+          
           {/* Added "My Projects" text here */}
           <MyProjects/>
+          
           <div className="lg:ml-[-780px] lg:mt-[50px] mt-[20px]">
           <ProjectPreview
               imageUrl={preview}
@@ -72,6 +81,8 @@ function App() {
               title="Cairo metro reservation tickets"
               description="The Cairo Metro Reservation Ticket Website streamlines ticket booking and management for Cairo's Metro system, offering real-time updates, secure transactions, and personalized user accounts."
             />
+
+
           </div>
 
         </div>

@@ -6,7 +6,7 @@ import './styles/navbar.css'; // Import the CSS file
 
 const Navbar = () => {
   return (
-    <nav className="text-white p-4 sticky top-0 w-full backdrop-blur">
+    <nav className="text-white p-4 sticky top-0 z-30 w-full   backdrop-blur-md">
       <div className="container mx-auto lg:px-16 xl:px-32  "> {/* Adjusted padding for container */}
         <div className="flex justify-between ">
           <div className="text-2xl">
