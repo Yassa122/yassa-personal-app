@@ -13,8 +13,8 @@ function App() {
 
   // Handler to set minHeight based on window width
   const handleResize = () => {
-    if (window.innerWidth <= 1000) {
-      setMinHeight('180vh');
+    if (window.innerHeight<=600) {
+      setMinHeight('auto');
     } else {
       setMinHeight('200vh');
     }
@@ -81,7 +81,6 @@ function App() {
               title="Cairo metro reservation tickets"
               description="The Cairo Metro Reservation Ticket Website streamlines ticket booking and management for Cairo's Metro system, offering real-time updates, secure transactions, and personalized user accounts."
             />
-
 
           </div>
 
