@@ -13,8 +13,8 @@ function App() {
 
   // Handler to set minHeight based on window width
   const handleResize = () => {
-    if (window.innerHeight<=600) {
-      setMinHeight('auto');
+    if (window.innerWidth <= 1000) {
+      setMinHeight('200vh');
     } else {
       setMinHeight('200vh');
     }
@@ -61,7 +61,7 @@ function App() {
 
         <div className="flex-1 flex flex-col items-center justify-center">
 
-        <Navbar/>
+              <Navbar/>
 
           {/* Use flex-col here */}
           <TextComponent
@@ -81,6 +81,7 @@ function App() {
               title="Cairo metro reservation tickets"
               description="The Cairo Metro Reservation Ticket Website streamlines ticket booking and management for Cairo's Metro system, offering real-time updates, secure transactions, and personalized user accounts."
             />
+
 
           </div>
 
