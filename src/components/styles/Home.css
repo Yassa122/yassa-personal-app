@@ -1,23 +1,23 @@
 
-.app {
+.Home {
   background: linear-gradient(to bottom right, #070547, #020004, #1B033A);
 }
 
 /* Default styles for laptop/desktop */
-.app {
+.Home {
   minHeight: 180vh;
 }
 
 /* Mobile styles in Portrait mode */
 @media (max-width: 768px) and (orientation: portrait) {
-  .app {
+  .Home {
     minHeight: 300vh;
   }
 }
 
 /* Mobile styles in Landscape mode */
 @media (max-width: 768px) and (orientation: landscape) {
-  .app {
+  .Home {
     minHeight: 320vh;
   }
 }
@@ -37,7 +37,7 @@
   width: 100%;
   height: auto;
 }
-/* App.css */
+/* Home.css */
 .logo.hovered {
   transform: scale(1.1) rotate(5deg); /* This will scale the logo to 110% and rotate it 5 degrees */
   transition: all 0.5s ease-in-out; /* This will ensure the transformation takes half a second with an ease-in-out timing function */
