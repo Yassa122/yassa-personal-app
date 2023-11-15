@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Lottie from "lottie-react";
 import animationData from './logo/Animation - 1700057562159.json';
 import Navbar from './Navbar';
-import './styles/Home.css'; // Ensure this file doesn't conflict with Tailwind
 
 function About() {
   const [animationStyle] = useState({
@@ -18,9 +17,9 @@ function About() {
 
   
   return (
-    <div className="  z-10 min-h-fit bg-custom-gradient ">
+    <div className="relative flex  z-10 min-h-fit bg-custom-gradient ">
 
-      <div className=" flex-col  z-10 relative min-h-max min-w-0">
+      <div className="flex flex-col z-10 relative min-h-max">
         <Navbar />
 
         {/* Lottie Animation */}

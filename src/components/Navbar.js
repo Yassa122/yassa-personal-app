@@ -25,8 +25,8 @@ const Navbar = () => {
                 <Link to="/projects" className="transition-colors duration-500 ease-in-out">Projects</Link>
               </li>
               <li>
-                {/* Replace a tag with Link for about */}
-                <Link to="/about" className="transition-colors duration-500 ease-in-out">About</Link>
+                {}
+                <Link to="/About" className="transition-colors duration-500 ease-in-out">About</Link>
               </li>
             </ul>
           </div>
