@@ -6,8 +6,8 @@ import './styles/Home.css'; // Ensure this file doesn't conflict with Tailwind
 
 function About() {
   const [animationStyle] = useState({
-    width: 400,
-    height: 400,
+    width: 350,
+    height: 350,
     position: 'absolute',
     top: 100,
     bottom:20
@@ -18,9 +18,9 @@ function About() {
 
   
   return (
-    <div className="relative flex flex-col  z-10 min-h-fit bg-custom-gradient ">
+    <div className="  z-10 min-h-fit bg-custom-gradient ">
 
-      <div className="flex flex-col  z-10 relative min-h-max">
+      <div className=" flex-col  z-10 relative min-h-max min-w-0">
         <Navbar />
 
         {/* Lottie Animation */}
