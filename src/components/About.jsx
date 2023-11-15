@@ -1,67 +1,53 @@
 import React, { useEffect, useState } from 'react';
 import Lottie from "lottie-react";
-import animationData from './logo/Animation - 1700057562159.json'; // Update this path to your Lottie JSON file
+import animationData from './logo/Animation - 1700057562159.json';
 import Navbar from './Navbar';
-import MyProjects from './myProjects';
-import './styles/Home.css';
+import './styles/Home.css'; // Ensure this file doesn't conflict with Tailwind
 
 function About() {
-  const [minHeight, setMinHeight] = useState('180vh');
+  const [animationStyle] = useState({
+    width: 400,
+    height: 400,
+    position: 'absolute',
+    top: 100,
+    bottom:20
+  });
 
-  // Handler to set minHeight based on window width
-  const handleResize = () => {
-    if (window.innerWidth <= 1000) {
-      setMinHeight('150vh'); // For smaller screens
-    } else {
-      setMinHeight('180vh'); // For larger screens
-    }
-  };
+  // Handler to set minHeight and animation style based on window width
+  
 
-  // Set initial minHeight and add resize event listener on mount
-  useEffect(() => {
-    handleResize();
-    window.addEventListener('resize', handleResize);
-
-    // Cleanup event listener on unmount
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  // Lottie options
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice'
-    }
-  };
-
+  
   return (
-    <div
-      style={{
-        minHeight: minHeight,
-        background: 'linear-gradient(135deg, #303F85 0%, #3D3D3D 0.01%, #000 52.4%, #190335 100%)'
-      }}
-      className="About relative"
-    >
-      <div className="flex flex-col h-screen z-10 relative">
+    <div className="relative flex flex-col  z-10 min-h-fit bg-custom-gradient ">
+
+      <div className="flex flex-col  z-10 relative min-h-max">
         <Navbar />
 
-        <div className="flex-1 flex flex-col items-center justify-center">
-          {/* Lottie Animation */}
-          <Lottie 
-  animationData={animationData} 
-  style={{ 
-    width: 400, 
-    height: 400, 
-    position: 'absolute', 
-    top: 100, 
-    left: 181 
-  }} 
-/>
-          {/* You can add more content here, like a description or other components */}
-          {/* <MyProjects /> or other components */}
+        {/* Lottie Animation */}
+        <Lottie 
+          animationData={animationData} 
+          style={animationStyle}
+        />
+
+        {/* Styled Text with Tailwind */}
+        <div className=" whitespace-normal  absolute top-[400px] left-1/2 -translate-x-1/2 text-[#B3B3B3] font-inter text-5xl font-bold ">
+          About
+          
         </div>
+        <p class=" leading-relaxed p-14 xl:p-52 mt-[400px] text-left text-[#B3B3B3] font-inter text-3xl ">My name is Yassa,
+         a third-year
+         computer scientist
+         majoring in software engineering 
+         at the German International University. 
+
+             Driven by a love for coding and technology, I dive headfirst into the digital world with a keen interest in software design and implementation.
+              Crafting code is more than an academic pursuit for me; it's the act of bringing ideas to life, solving complex problems,
+               and transforming the abstract into the concrete.
+               Each new challenge is a thrilling adventure, an opportunity to push the boundaries of my creativity and knowledge.
+            As I navigate my journey, I look forward to leaving a tangible mark on the world with the solutions I create,
+             continually evolving in this exciting and fulfilling digital universe.</p>
+
+        {/* Additional content */}
       </div>
     </div>
   );

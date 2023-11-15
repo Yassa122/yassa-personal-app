@@ -4,6 +4,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      backgroundImage: {
+        'custom-gradient': 'linear-gradient(135deg, #303F85 0%, #3D3D3D 0.01%, #000 52.4%, #190335 100%)',
+      },
       colors: {
         'gray-custom': '#BBBBBB',
       },

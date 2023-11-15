@@ -1,8 +1,7 @@
 // src/components/TextComponent.js
 import React from 'react';
-import PropTypes from 'prop-types';
 import Subtext from './Subtext';
-import Contact from './Contact'; // Import the Contact component
+import Contact from './Contact.jsx'; // Import the Contact component
 import Twitter from './twitter';
 
 const TextComponent = ({ text1, text2, subText, delay1 = 300, delay2 = 400, delay3 = 500 }) => {

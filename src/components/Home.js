@@ -6,35 +6,16 @@ import MyProjects from './myProjects';
 import ProjectPreview from './ProjectPreview';
 import preview from'./logo/CairoMetroImg.png';
 import './styles/Home.css';
-import React, { useEffect, useState } from 'react';
 
 function Home() {
-  const [minHeight, setMinHeight] = useState('220vh');
+  
 
-  // Handler to set minHeight based on window width
-  const handleResize = () => {
-    if (window.innerWidth <= 1000) {
-      setMinHeight('230vh');
-    } else {
-      setMinHeight('200vh');
-    }
-  };
-
-  // Set initial minHeight and add resize event listener on mount
-  useEffect(() => {
-    handleResize();
-    window.addEventListener('resize', handleResize);
-
-    // Cleanup event listener on unmount
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
+  
   return (
     
     <div
     
       style={{
-        minHeight: minHeight, // using the state variable here
         background: 'linear-gradient(to bottom right, #070547, #020004, #1B033A)',
       }}
       className="Home relative"
@@ -56,7 +37,7 @@ function Home() {
         }}
       />
 
-      <div className="flex flex-col h-screen z-10 relative">
+      <div className="flex flex-col min-h-fit z-10 relative">
 
 
         <div className="flex-1 flex flex-col items-center justify-center">
