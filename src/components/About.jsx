@@ -33,7 +33,7 @@ function About() {
           About
           
         </div>
-        <p class=" leading-relaxed p-14 xl:p-52 mt-[400px] text-left text-[#B3B3B3] font-inter text-3xl ">My name is Yassa,
+        <p class=" leading-relaxed p-14 xl:p-52 mt-[400px] text-left text-[#B3B3B3] font-inter text-2xl ">My name is Yassa,
          a third-year
          computer scientist
          majoring in software engineering 
