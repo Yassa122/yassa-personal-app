@@ -1,7 +1,8 @@
 // src/Home.js
 import Navbar from "./Navbar";
 import TextComponent from "./TextComponent";
-import houseAnimation from "./logo/SpaceRocket.json"; // Import the Lottie file
+import rocketAnimation from "./logo/SpaceRocket.json"; // Import the Lottie file
+import glowys from "./logo/glowy.json";
 import MyProjects from "./myProjects";
 import ProjectPreview from "./ProjectPreview";
 import preview from "./logo/CairoMetroImg.png";
@@ -13,7 +14,15 @@ function Home() {
   const defaultOptions = {
     loop: true,
     autoplay: true,
-    animationData: houseAnimation,
+    animationData: rocketAnimation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+  const glowy = {
+    loop: true,
+    autoplay: true,
+    animationData: glowys,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
     },
@@ -28,6 +37,15 @@ function Home() {
       className="Home relative"
     >
       {/* Lottie Logo */}
+      <div className="absolute mt-[30%] sm:mt-0"
+        style={{
+          zIndex: 1,
+          height:1000
+        }}
+      >
+        <Lottie {...glowy} />
+      </div>
+
       <div
         style={{
           position: "absolute",
