@@ -1,9 +1,7 @@
-// src/components/Navbar.js
 import React from 'react';
 import './styles/navbar.css'; // Import the CSS file
 import { Link } from 'react-router-dom';
-
-// src/components/Navbar.js
+import logo from './logo/favicon.ico'; // Import your logo
 
 const Navbar = () => {
   return (
@@ -11,21 +9,20 @@ const Navbar = () => {
       <div className="container mx-auto lg:px-16 xl:px-32">
         <div className="flex justify-between">
           <div className="text-2xl">
-            {/* Replace a tag with Link for home */}
-            <Link to="/" className="transition-colors duration-500 ease-in-out">Yassa</Link>
+            {/* Replace text with logo */}
+            <Link to="/" className="transition-colors duration-500 ease-in-out">
+              <img src={logo} alt="Logo" className="h-8 w-8" /> {/* Adjust size as needed */}
+            </Link>
           </div>
           <div>
             <ul className="flex space-x-4">
               <li>
-                {/* Replace a tag with Link for home */}
                 <Link to="/" className="transition-colors duration-500 ease-in-out">Home</Link>
               </li>
               <li>
-                {/* Replace a tag with Link for projects */}
                 <Link to="/projects" className="transition-colors duration-500 ease-in-out">Projects</Link>
               </li>
               <li>
-                {}
                 <Link to="/About" className="transition-colors duration-500 ease-in-out">About</Link>
               </li>
             </ul>
@@ -35,6 +32,5 @@ const Navbar = () => {
     </nav>
   );
 };
-
 
 export default Navbar;
