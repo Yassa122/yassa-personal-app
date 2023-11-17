@@ -19,7 +19,7 @@ function About() {
     width: 400, // Adjust size as needed
     height: 400, // Adjust size as needed
     position: "absolute",
-    right: 20, // Adjust for positioning
+    right: 0, // Adjust for positioning
     bottom: 20, // Adjust for positioning
   };
 
