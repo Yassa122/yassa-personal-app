@@ -1,7 +1,7 @@
-import React from 'react';
-import './styles/navbar.css'; // Import the CSS file
-import { Link } from 'react-router-dom';
-import logo from './logo/favicon.ico'; // Import your logo
+import React from "react";
+import "./styles/navbar.css"; // Import the CSS file
+import { Link } from "react-router-dom";
+import logo from "./logo/favicon.ico"; // Import your logo
 
 const Navbar = () => {
   return (
@@ -11,19 +11,35 @@ const Navbar = () => {
           <div className="text-2xl">
             {/* Replace text with logo */}
             <Link to="/" className="transition-colors duration-500 ease-in-out">
-              <img src={logo} alt="Logo" className="h-8 w-8" /> {/* Adjust size as needed */}
+              <img src={logo} alt="Logo" className="h-8 w-8" />{" "}
+              {/* Adjust size as needed */}
             </Link>
           </div>
           <div>
             <ul className="flex space-x-4">
               <li>
-                <Link to="/" className="transition-colors duration-500 ease-in-out">Home</Link>
+                <Link
+                  to="/"
+                  className="transition-colors duration-500 ease-in-out"
+                >
+                  Home
+                </Link>
               </li>
               <li>
-                <Link to="/projects" className="transition-colors duration-500 ease-in-out">Projects</Link>
+                <Link
+                  to="/Projects"
+                  className="transition-colors duration-500 ease-in-out"
+                >
+                  Projects
+                </Link>
               </li>
               <li>
-                <Link to="/About" className="transition-colors duration-500 ease-in-out">About</Link>
+                <Link
+                  to="/About"
+                  className="transition-colors duration-500 ease-in-out"
+                >
+                  About
+                </Link>
               </li>
             </ul>
           </div>

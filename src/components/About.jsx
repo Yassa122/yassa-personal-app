@@ -25,16 +25,13 @@ function About() {
 
   return (
     <div className="relative flex z-10 min-h-fit bg-custom-gradient">
-       
       <div className="flex flex-col z-10 relative min-h-max">
         <Navbar />
 
         {/* First Lottie Animation */}
-        
 
-        <div className="ml-[10%] mb-[200px] xl:mb-[0%]" >
-        <Lottie animationData={animationData} style={animationStyle} />
-
+        <div className="ml-[10%] mb-[200px] xl:mb-[0%]">
+          <Lottie animationData={animationData} style={animationStyle} />
         </div>
         {/* Second Lottie Animation */}
 
@@ -54,7 +51,7 @@ function About() {
           with the solutions I create, continually evolving in this exciting and
           fulfilling digital universe.
         </p>
-     
+
         <div className=" mt-[100px] max-xl:mt-[250px] ">
           <Lottie
             animationData={secondAnimationData}
