@@ -1,6 +1,5 @@
 // src/Home.js
 import Navbar from "./Navbar";
-
 import ProjectPreview from "./ProjectPreview";
 import preview from "./logo/CairoMetroImg.png";
 import "./styles/Home.css";
@@ -10,16 +9,20 @@ function Projects() {
 
   return (
     <div
-      style={{
-        background: "bg-custom-gradient2",
-      }}
-      
+      className="custom-gradient2 min-h-screen"
+      // If you're not using Tailwind, you can use inline styles:
+       style={{ background: "linear-gradient(135deg, #050000 0%, #070C39 0.01%, #000 55.21%)", minHeight: "100vh" }}
     >
       <div className="flex flex-col min-h-fit z-10 relative">
+      <Navbar />
+
         <div className="flex-1 flex flex-col items-center justify-center">
-          <Navbar />
-          {/* Added "My Projects" text here */}-
-          <div className="lg:ml-[-780px] lg:mt-[50px] mt-[20px]">
+
+          <div className=" text-gray-custom text-40px font-inter font-bold p-14 pb-16">
+          MY PROJECTS
+
+          </div>
+          <div className=" lg:mt-[50px] mt-[20px]">
             <ProjectPreview
               imageUrl={preview}
               projectLink="https://cairometrosystem.onrender.com/"
