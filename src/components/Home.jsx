@@ -6,6 +6,8 @@ import glowys from "./logo/glowy.json";
 import MyProjects from "./myProjects";
 import ProjectPreview from "./ProjectPreview";
 import preview from "./logo/CairoMetroImg.png";
+import preview2 from "./logo/Ecs-help-desk.png";
+
 import "./styles/Home.css";
 import Lottie from "lottie-react"; // Import Lottie
 
@@ -37,10 +39,11 @@ function Home() {
       className="Home relative"
     >
       {/* Lottie Logo */}
-      <div className="absolute mt-[30%] sm:mt-0"
+      <div
+        className="absolute mt-[30%] sm:mt-0"
         style={{
           zIndex: 1,
-          height:1000
+          height: 1000,
         }}
       >
         <Lottie {...glowy} />
@@ -71,15 +74,33 @@ function Home() {
           />
 
           {/* Added "My Projects" text here */}
-          <MyProjects />
+          <div className="flex flex-col min-h-fit z-10 relative">
+            <div className="flex-1 flex flex-col items-center justify-center">
+              <Navbar />
+              <TextComponent
+                text1="Developing intelligent, seamless "
+                text2=" software."
+                subText="Innovation leaps from student's code."
+              />
+              <MyProjects />
 
-          <div className="lg:ml-[-780px] lg:mt-[50px] mt-[20px]">
+              {/* Projects container with flex display */}
+              <div className="flex flex-col sm:flex-row justify-center items-center lg:mt-[50px] mt-[20px] sm:space-x-24 space-y-4 sm:space-y-0">
             <ProjectPreview
               imageUrl={preview}
               projectLink="https://cairometrosystem.onrender.com/"
               title="Cairo metro reservation tickets"
               description="The Cairo Metro Reservation Ticket Website streamlines ticket booking and management for Cairo's Metro system, offering real-time updates, secure transactions, and personalized user accounts."
             />
+
+            <ProjectPreview
+              imageUrl={preview2}
+              projectLink="https://ecs-project-omega.vercel.app/Home"
+              title="ECS-Help-Desk"
+              description="The ECS Help Desk streamlines support with an efficient ticketing system, comprehensive user assistance, a self-service knowledge base, automated query responses, and detailed performance analytics."
+            />
+          </div>
+            </div>
           </div>
         </div>
       </div>
