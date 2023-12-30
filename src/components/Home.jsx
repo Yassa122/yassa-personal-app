@@ -88,7 +88,7 @@ function Home() {
 
             <ProjectPreview
               imageUrl={preview2}
-              projectLink="https://ecs-project-omega.vercel.app/Home"
+              projectLink="https://ecs-project-omega.vercel.app/#/Home"
               title="ECS-Help-Desk"
               description="The ECS Help Desk streamlines support with an efficient ticketing system, comprehensive user assistance, a self-service knowledge base, automated query responses, and detailed performance analytics."
             />
