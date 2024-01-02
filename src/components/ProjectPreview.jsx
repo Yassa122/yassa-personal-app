@@ -22,7 +22,7 @@ const ProjectPreview = ({ imageUrl, projectLink, title, description }) => (
     </div>
   </a>
 );
-
+//
 ProjectPreview.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   projectLink: PropTypes.string.isRequired,
