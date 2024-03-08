@@ -2,6 +2,7 @@
 import Navbar from "./Navbar";
 import ProjectPreview from "./ProjectPreview";
 import preview from "./logo/CairoMetroImg.png";
+import preview2 from "./logo/Ecs-help-desk.png
 import "./styles/Home.css";
 
 function Projects() {
