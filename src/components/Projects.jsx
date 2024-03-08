@@ -22,14 +22,23 @@ function Projects() {
           MY PROJECTS
 
           </div>
-          <div className=" lg:mt-[50px] mt-[20px]">
+          
+            <div className="flex flex-col sm:flex-row justify-center items-center lg:mt-[50px] mt-[20px] sm:space-x-24 space-y-4 sm:space-y-0">
             <ProjectPreview
               imageUrl={preview}
               projectLink="https://cairometrosystem.onrender.com/"
               title="Cairo metro reservation tickets"
               description="The Cairo Metro Reservation Ticket Website streamlines ticket booking and management for Cairo's Metro system, offering real-time updates, secure transactions, and personalized user accounts."
             />
+
+            <ProjectPreview
+              imageUrl={preview2}
+              projectLink="https://ecs-project-omega.vercel.app/#/Home"
+              title="ECS-Help-Desk"
+              description="The ECS Help Desk streamlines support with an efficient ticketing system, comprehensive user assistance, a self-service knowledge base, automated query responses, and detailed performance analytics."
+            />
           </div>
+        
         </div>
       </div>
     </div>
