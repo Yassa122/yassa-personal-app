@@ -1,135 +1,100 @@
+// src/Portfolio.js
 import React from 'react';
 import { motion } from 'framer-motion';
-import Navbar from './Navbar';
-import Footer from './Footer.jsx';
-import preview from './logo/CairoMetroImg.png';
-import vd from './logo/Ecs-help-desk.png';
-
-const projects = [
-  {
-    id: 1,
-    title: "Cairo Metro Project",
-    description: "A comprehensive app for Cairo's metro system.",
-    imageUrl: preview,
-    link: "https://project-one-link.com"
-  },
-  {
-    id: 2,
-    title: "ECS Help Desk",
-    description: "An efficient help desk solution for ECS.",
-    imageUrl: vd,
-    link: "https://project-two-link.com"
-  },
-  {
-    id: 3,
-    title: "Project Three",
-    description: "Description of project three.",
-    imageUrl: "project-three-image-url.jpg",
-    link: "https://project-three-link.com"
-  },
-];
 
 const Home = () => {
+  const projects = [
+    { name: 'Hidden Message', description: 'Encrypt a message inside a message', year: 2024 },
+    { name: 'simpleQR', description: 'QR code generator', year: 2024 },
+    { name: 'Abdulraheem', description: 'Interior designer portfolio', year: 2023 },
+    { name: 'link', description: 'A URL shortener', year: 2023 },
+    { name: 'Cairo Metro', description: 'Ticketing system for Egypt\'s Cairo Metro', year: 2023 },
+    { name: 'Tickets22', description: 'Ticketing system for Qatar 2022 World Cup', year: 2023 },
+    { name: 'DummyDB', description: 'Database generator for testing', year: 2022 },
+  ];
+
   return (
-    <div className="bg-gray-900 text-white">
-      <Navbar />
-      {/* Hero Section */}
-      <section id="home" className="relative flex flex-col items-center justify-center h-screen bg-gray-900 text-white text-center p-10 overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-gray-800 to-gray-900 text-white flex flex-col justify-center items-center">
+      <header className="w-full flex justify-between items-center p-5 max-w-4xl mx-auto">
         <motion.div
+          className="text-3xl font-bold tracking-wider"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.2 }}
-          transition={{ duration: 2 }}
-        />
-        <motion.div
-          className="rounded-lg z-10"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <motion.h1
-            className="text-5xl font-bold"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 1 }}
-          >
-            Welcome to Yassa Ashraf's Portfolio
-          </motion.h1>
-          <motion.p
-            className="mt-4 text-lg"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2, duration: 1 }}
-          >
-            Showcasing my best work in software engineering and computer science projects.
-          </motion.p>
-          <motion.p
-            className="mt-2 text-xl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 3, duration: 1 }}
-          >
-            DEVELOPING INTELLIGENT, SEAMLESS SOFTWARE
-          </motion.p>
-          <motion.p
-            className="mt-2 text-lg"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 4, duration: 1 }}
-          >
-            I'm a 3rd year Computer Science student majoring in Software Engineering at the German International University.
-          </motion.p>
-          <div className="mt-6 flex justify-center space-x-4">
-            <motion.a
-              href="https://github.com/your-github-profile"
-              className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 5, duration: 1 }}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub Profile
-            </motion.a>
-            <motion.a
-              href="your-cv-download-link"
-              className="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 6, duration: 1 }}
-              download
-            >
-              Download CV
-            </motion.a>
-          </div>
+          Your Name
         </motion.div>
-      </section>
-
-      {/* Projects Section */}
-      <section id="projects" className="py-20 bg-gray-800">
-        <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-10">Projects</h2>
-          <div className="space-y-10">
-            {projects.map((project) => (
-              <motion.div
-                key={project.id}
-                className="bg-gray-700 shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105 flex flex-col md:flex-row"
-                whileHover={{ scale: 1.05 }}
-              >
-                <img src={project.imageUrl} alt={project.title} className="w-full md:w-1/2 h-56 md:h-auto object-cover" />
-                <div className="p-6 flex flex-col justify-between">
-                  <div>
-                    <h3 className="text-2xl font-semibold mb-2">{project.title}</h3>
-                    <p className="text-gray-300 mb-4">{project.description}</p>
-                  </div>
-                  <a href={project.link} className="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600" target="_blank" rel="noopener noreferrer">View Project</a>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+        <div className="space-x-4 text-lg">
+          <a href="#about" className="hover:underline">About</a>
+          <a href="#work" className="hover:underline">Work</a>
+          <a href="#projects" className="hover:underline">Projects</a>
+          <a href="#contact" className="hover:underline">Contact</a>
         </div>
-      </section>
+      </header>
 
-      <Footer />
+      <main className="p-5 w-full max-w-4xl mx-auto flex flex-col items-center">
+        <motion.section
+          id="about"
+          className="mb-10 w-full text-center"
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="text-3xl font-bold mb-3">About</h2>
+          <p className="text-lg leading-relaxed">Passionate about crafting seamless user experiences with attention to detail. I'm always sided with practical solutions that are both functional and aesthetically pleasing.</p>
+        </motion.section>
+
+        <motion.section
+          id="work"
+          className="mb-10 w-full text-center"
+          initial={{ x: 100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="text-3xl font-bold mb-3">Work</h2>
+          <ul className="list-none">
+            <li className="mb-2">
+              <span className="font-semibold">Instatus</span> - Fullstack Engineer - <span className="text-gray-400">July 2022 - Present</span>
+            </li>
+            <li className="mb-2">
+              <span className="font-semibold">Microsoft</span> - Frontend & Design Engineer - <span className="text-gray-400">July 2023 - October 2023</span>
+            </li>
+          </ul>
+        </motion.section>
+
+        <motion.section
+          id="projects"
+          className="mb-10 w-full text-center"
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="text-3xl font-bold mb-3">Projects</h2>
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {projects.map((project, index) => (
+              <motion.li
+                key={index}
+                className="p-4 bg-gray-700 rounded-lg shadow-lg hover:bg-gray-600 transition duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <h3 className="text-xl font-semibold mb-2">{project.name}</h3>
+                <p className="text-gray-300">{project.description} - {project.year}</p>
+              </motion.li>
+            ))}
+          </ul>
+        </motion.section>
+      </main>
+
+      <footer className="p-5 text-center w-full max-w-4xl mx-auto">
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          &copy; 2024 Your Name. All rights reserved.
+        </motion.p>
+      </footer>
     </div>
   );
 }
