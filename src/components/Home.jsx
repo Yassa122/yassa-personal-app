@@ -59,7 +59,7 @@ const Portfolio = () => {
             <a href="https://twitter.com/yourhandle" className="text-gray-400 hover:text-gray-300">
               <FaTwitter size={24} />
             </a>
-            <a href="https://github.com/yourhandle" className="text-gray-400 hover:text-gray-300">
+            <a href="https://github.com/Yassa122" className="text-gray-400 hover:text-gray-300">
               <FaGithub size={24} />
             </a>
             <a href="mailto:youremail@example.com" className="text-gray-400 hover:text-gray-300">
