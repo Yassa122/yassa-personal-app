@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaTwitter, FaGithub, FaEnvelope } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
 
 const Portfolio = () => {
   const [viewportWidth, setViewportWidth] = useState(1220);
@@ -47,17 +47,16 @@ const Portfolio = () => {
   return (
     <div className="min-h-screen bg-dark-grey text-gray-100 p-8 flex justify-center">
       <div className="max-w-2xl w-full">
-        <header className="mb-8 flex justify-between items-center">
+        <header className="mb-8 flex flex-col items-center md:flex-row md:justify-between">
           <div className="flex items-center space-x-4">
-            <img src="your-photo-url.jpg" alt="Yassa Ashraf" className="w-12 h-12 rounded-full" />
             <div>
               <h1 className="text-xl font-bold">Yassa Ashraf</h1>
-              <p className="text-gray-400">Frontend Developer</p>
+              <p className="text-gray-400">Full-Stack Developer</p>
             </div>
           </div>
           <div className="flex items-center space-x-4">
-            <a href="https://twitter.com/yourhandle" className="text-gray-400 hover:text-gray-300">
-              <FaTwitter size={24} />
+            <a href="https://www.linkedin.com/in/yassa-ashraf-b59309231/" className="text-gray-400 hover:text-gray-300">
+              <FaLinkedin size={24} />
             </a>
             <a href="https://github.com/Yassa122" className="text-gray-400 hover:text-gray-300">
               <FaGithub size={24} />
@@ -71,7 +70,7 @@ const Portfolio = () => {
           <section id="home" className="mb-8">
             <h1 className="text-4xl font-bold mb-4">Hey, I'm Yassa 👋</h1>
             <p className="mb-8 text-lg">
-              I'm a frontend developer, optimist, and community builder. I currently work as a frontend developer, creating educational content for developers. My content focuses on web development technologies like JavaScript, TypeScript, React, and Next.js.
+              I'm a Full-Stack developer, optimist, and community builder. I currently work as a full-stack developer, creating educational content for developers. My content focuses on web development technologies like JavaScript, TypeScript, React, and Next.js.
             </p>
           </section>
           <section id="projects" className="mb-8">
