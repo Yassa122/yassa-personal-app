@@ -9,10 +9,8 @@ const Navbar = () => {
       <div className="container mx-auto lg:px-16 xl:px-32">
         <div className="flex justify-between">
           <div className="text-2xl">
-            {/* Replace text with logo */}
             <Link to="/" className="transition-colors duration-500 ease-in-out">
               <img src={logo} alt="Logo" className="h-8 w-8" />{" "}
-              {/* Adjust size as needed */}
             </Link>
           </div>
           <div>
