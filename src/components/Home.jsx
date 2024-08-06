@@ -15,13 +15,13 @@ const Portfolio = () => {
     {
       name: "ECS Help Desk",
       description: "An intuitive and responsive help desk system combining modern web technologies to enhance user experience and streamline support processes.",
-      year: 2024,
+      year: 2023,
       link: "https://ecs-project-omega.vercel.app/",
     },
     {
       name: "Task Titan",
       description: "A robust task management application designed to help users efficiently organize and track their tasks with advanced features like reminders and collaboration tools.",
-      year: 2023,
+      year: 2023-"present",
       link: "https://task-titan.top",
     },
     {
@@ -31,15 +31,15 @@ const Portfolio = () => {
       link: "https://cairometrosystem.onrender.com/",
     },
     {
-      name: "Video Feature Extraction Using Deep Learning",
-      description: "A project employing a 4-layer Convolutional Neural Network (CNN) to extract meaningful features from video data, aiding in video analysis and machine learning tasks.",
-      year: 2023,
-      link: "https://example.com/video-feature-extraction",
-    },
+      "name": "Amaria E-Commerce",
+      "description": "Amaria E-Commerce is a modern online shopping platform offering a wide range of t-shirt products. The website features a user-friendly interface, secure payment options, and efficient delivery services. With a focus on customer satisfaction, Amaria E-Commerce provides an exceptional shopping experience, complete with detailed product descriptions, customer reviews, and personalized recommendations.",
+      "year": 2024,
+      "link": "https://amaria-local.vercel.app"
+    },    
     {
       name: "Book Store App - AWS",
       description: "A simple yet powerful web application for managing a book store, built using a JavaScript stack and hosted on AWS for robust performance and scalability.",
-      year: 2023,
+      year: 2024,
       link: "https://example.com/book-store-app-aws",
     },
   ];
@@ -98,29 +98,7 @@ const Portfolio = () => {
               ))}
             </motion.div>
           </section>
-          <section id="blog" className="mb-8">
-            <h2 className="text-3xl font-bold mb-4">Responsive Viewport</h2>
-            <div className="flex justify-center mt-4 space-x-4">
-              <button
-                onClick={() => setViewportWidth(375)}
-                className="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700"
-              >
-                Mobile
-              </button>
-              <button
-                onClick={() => setViewportWidth(768)}
-                className="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700"
-              >
-                Tablet
-              </button>
-              <button
-                onClick={() => setViewportWidth(1220)}
-                className="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700"
-              >
-                Desktop
-              </button>
-            </div>
-          </section>
+    
         </main>
       </div>
     </div>
