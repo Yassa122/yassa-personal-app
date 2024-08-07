@@ -1,9 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
 
 const Portfolio = () => {
-  const [viewportWidth, setViewportWidth] = useState(1220);
+  const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setViewportWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const projects = [
     {
@@ -21,7 +33,7 @@ const Portfolio = () => {
     {
       name: "Task Titan",
       description: "A robust task management application designed to help users efficiently organize and track their tasks with advanced features like reminders and collaboration tools.",
-      year: 2023-"present",
+      year: "2023-present",
       link: "https://task-titan.top",
     },
     {
@@ -31,11 +43,11 @@ const Portfolio = () => {
       link: "https://cairometrosystem.onrender.com/",
     },
     {
-      "name": "Amaria E-Commerce",
-      "description": "Amaria E-Commerce is a modern online shopping platform offering a wide range of t-shirt products. The website features a user-friendly interface, secure payment options, and efficient delivery services. With a focus on customer satisfaction, Amaria E-Commerce provides an exceptional shopping experience, complete with detailed product descriptions, customer reviews, and personalized recommendations.",
-      "year": 2024,
-      "link": "https://amaria-local.vercel.app"
-    },    
+      name: "Amaria E-Commerce",
+      description: "Amaria E-Commerce is a modern online shopping platform offering a wide range of t-shirt products. The website features a user-friendly interface, secure payment options, and efficient delivery services. With a focus on customer satisfaction, Amaria E-Commerce provides an exceptional shopping experience, complete with detailed product descriptions, customer reviews, and personalized recommendations.",
+      year: 2024,
+      link: "https://amaria-local.vercel.app"
+    },
     {
       name: "Book Store App - AWS",
       description: "A simple yet powerful web application for managing a book store, built using a JavaScript stack and hosted on AWS for robust performance and scalability.",
@@ -43,7 +55,7 @@ const Portfolio = () => {
       link: "https://example.com/book-store-app-aws",
     },
   ];
-//
+
   return (
     <div className="min-h-screen bg-dark-grey text-gray-100 p-8 flex justify-center">
       <div className="max-w-2xl w-full">
@@ -84,7 +96,7 @@ const Portfolio = () => {
               {projects.map((project, index) => (
                 <motion.a
                   key={index}
-                  className="p-3 h-32 rounded-lg shadow-lg cursor-pointer transition-all duration-500 ease-in-out transform hover:scale-105 hover:bg-zinc-800"
+                  className="p-4 rounded-lg shadow-lg cursor-pointer transition-all duration-500 ease-in-out transform hover:scale-105 hover:bg-zinc-800"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   href={project.link}
@@ -98,7 +110,6 @@ const Portfolio = () => {
               ))}
             </motion.div>
           </section>
-    
         </main>
       </div>
     </div>
