@@ -60,11 +60,18 @@ const Portfolio = () => {
       link: 'https://amaria-local.vercel.app',
     },
     {
+      name: 'Myko E-Commerce',
+      description:
+        'A modern online shopping platform offering a wide range of t-shirt products with a user-friendly interface, secure payment options, and efficient delivery services.',
+      year: 2024,
+      link: 'https://myko-store.vercel.app',
+    },
+    {
       name: 'Book Store App - AWS',
       description:
         'A simple yet powerful web application for managing a book store, built with a JavaScript stack and hosted on AWS for robust performance and scalability.',
       year: 2024,
-      link: 'https://example.com/book-store-app-aws',
+      link: 'https://github.com/Yassa122/BookStoreApp-AWS',
     },
   ];
 
