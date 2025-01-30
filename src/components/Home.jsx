@@ -155,7 +155,7 @@ const Portfolio = () => {
                 <FaGithub size={22} />
               </a>
               <a
-                href="mailto:youremail@example.com"
+                href="mailto:yassa.ashraf56@gmail.com"
                 className="text-gray-400 hover:text-gray-200 transition-colors duration-300"
               >
                 <FaEnvelope size={22} />
