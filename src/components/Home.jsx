@@ -72,19 +72,20 @@ const Portfolio = () => {
     {
       icon: <FaServer className="text-green-300 w-5 h-5 mr-2 flex-shrink-0" />,
       summary:
-        'Mid-level Backend Engineer at Trevi (Oct 2024 - Present, Remote) — Spearheading microservice development for scalable backend solutions, ensuring robust architecture and seamless deployments.',
+        'Mid-level Backend Engineer at Trevi (Oct 2024 - Present, Remote) — Developing a seamlessly innovative finance app that simplifies money management, offers exclusive cash back rewards, and includes a Family Wallet for shared budgeting, all secured with robust backend architectures.',
     },
     {
       icon: <FaLaptopCode className="text-green-300 w-5 h-5 mr-2 flex-shrink-0" />,
       summary:
-        'Full-Stack Developer at MMSoultions (Jul 2024 - Present, Remote) — Building end-to-end solutions with modern web technologies for US-based clients, focusing on user-centric features.',
+        'Full-Stack Developer at MMSolutions (Jul 2024 - Present, Remote) — Delivering next-level freight dispatch services for Amazon Freight partner carriers, ensuring efficient, reliable, and driver-friendly solutions through modern web technologies.',
     },
     {
       icon: <FaAtom className="text-green-300 w-5 h-5 mr-2 flex-shrink-0" />,
       summary:
-        'Full-Stack Developer at Kinetics (Aug 2024 - Oct 2024, Onsite) — Led internal initiatives for front-end modernization and integrated RESTful APIs to improve overall performance by 30%.',
+        'Full-Stack Developer at Kinetics (Aug 2024 - Oct 2024, Onsite) — Led internal initiatives for front-end modernization and integrated RESTful APIs, improving performance by 30% while driving team adoption of new coding practices.',
     },
   ];
+
 
   // Updated Bachelor Thesis information
   const bachelorThesis = {
