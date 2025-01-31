@@ -41,7 +41,11 @@ module.exports = {
 
   },
   variants: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        inter: ['Inter', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 }
