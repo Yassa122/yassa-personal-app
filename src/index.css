@@ -18,3 +18,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+::selection {
+ background-color: #ff9900; /* Tailwind's blue-400 */
+  color: #ffffff;
+}
+
+/* Selection style for dark mode */
+.dark ::selection {
+  background-color: #003b32; /* Tailwind's blue-400 */
+  color: #0cddd3; /* White text */
+}
