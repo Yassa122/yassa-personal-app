@@ -79,7 +79,7 @@ const Portfolio = () => {
 
   const experiences = [
     {
-      icon: <FaServer className="text-teal-950 w-5 h-5 mr-2 flex-shrink-0" />,
+      icon: <FaServer className="text-orange-600 w-5 h-5 mr-2 flex-shrink-0" />,
       summary:
         'Mid-level Backend Engineer at Trevi (Oct 2024 - Present, Remote) — Developing a seamlessly innovative finance app that simplifies money management, offers exclusive cash back rewards, and includes a Family Wallet for shared budgeting, all secured with robust backend architectures.',
     },
@@ -211,7 +211,7 @@ const Portfolio = () => {
                 whileTap={{ scale: 0.98 }}
               >
                 {/* Marker */}
-                <span className="absolute -left-[9px] top-0 flex items-center justify-center w-4 h-4 bg-teal-950 rounded-full" />
+                <span className="absolute -left-[9px] top-0 flex items-center justify-center w-4 h-4 bg-teal-800 rounded-full" />
 
                 {/* Content with Icon + Summary */}
                 <div className="pl-6 pt-1 flex items-start">
