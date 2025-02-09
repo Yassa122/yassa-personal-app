@@ -1,3 +1,4 @@
+// src/components/Portfolio.jsx
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import {
@@ -8,8 +9,8 @@ import {
   FaLaptopCode,
   FaAtom,
 } from 'react-icons/fa';
-import yassaPhoto from '../../src/components/logo/99081198.jpeg'; // path depends on file structure
-import { Link } from 'react-router-dom'; // <-- import Link for routing
+import yassaPhoto from '../../src/components/logo/99081198.jpeg'; // adjust path as needed
+import { Link } from 'react-router-dom'; // for routing
 
 const Portfolio = () => {
   const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
@@ -19,7 +20,6 @@ const Portfolio = () => {
       setViewportWidth(window.innerWidth);
     };
     window.addEventListener('resize', handleResize);
-
     return () => {
       window.removeEventListener('resize', handleResize);
     };
@@ -77,24 +77,27 @@ const Portfolio = () => {
     },
   ];
 
+  // Each experience object now includes a 'link' field.
   const experiences = [
     {
       icon: <FaServer className="text-orange-600 w-5 h-5 mr-2 flex-shrink-0" />,
       summary:
         'Mid-level Backend Engineer at Trevi (Oct 2024 - Present, Remote) — Developing a seamlessly innovative finance app that simplifies money management, offers exclusive cash back rewards, and includes a Family Wallet for shared budgeting, all secured with robust backend architectures.',
+      link: 'https://trevi.app',
     },
     {
       icon: <FaLaptopCode className="text-teal-950 w-5 h-5 mr-2 flex-shrink-0" />,
       summary:
         'Full-Stack Developer at MMSolutions (Jul 2024 - Present, Remote) — Delivering next-level freight dispatch services for Amazon Freight partner carriers, ensuring efficient, reliable, and driver-friendly solutions through modern web technologies.',
+      link: 'https://mmsoln.com',
     },
     {
       icon: <FaAtom className="text-teal-950 w-5 h-5 mr-2 flex-shrink-0" />,
       summary:
         'Full-Stack Developer at Kinetics (Aug 2024 - Oct 2024, Onsite) — Led internal initiatives for front-end modernization and integrated RESTful APIs, improving performance by 30% while driving team adoption of new coding practices.',
+      link: 'https://www.kineticsegypt.com/',
     },
   ];
-
 
   // Updated Bachelor Thesis information
   const bachelorThesis = {
@@ -114,7 +117,7 @@ const Portfolio = () => {
         transition={{ duration: 0.8 }}
       >
         {/* Header */}
-        <header className="mb-12 ">
+        <header className="mb-12">
           <div className="flex flex-col md:flex-row gap-x-8">
             <motion.div
               className="flex items-center space-x-4"
@@ -199,28 +202,31 @@ const Portfolio = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-8 text-stone-300">
             Experience
           </h2>
-
-          {/* Timeline container */}
           <div className="relative border-l-4 border-teal-950 ml-4">
             {experiences.map((exp, index) => (
-              <motion.div
+              <a
+                href={exp.link}
+                target="_blank"
+                rel="noopener noreferrer"
                 key={index}
-                className="relative pb-10"
-                initial={{ opacity: 1 }}
-                whileHover={{ scale: 1.01 }}
-                whileTap={{ scale: 0.98 }}
               >
-                {/* Marker */}
-                <span className="absolute -left-[9px] top-0 flex items-center justify-center w-4 h-4 bg-teal-800 rounded-full" />
-
-                {/* Content with Icon + Summary */}
-                <div className="pl-6 pt-1 flex items-start">
-                  {exp.icon}
-                  <p className="text-stone-300 text-sm md:text-base">
-                    {exp.summary}
-                  </p>
-                </div>
-              </motion.div>
+                <motion.div
+                  className="relative pb-10 pl-8"
+                  initial={{ opacity: 1 }}
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  {/* Marker */}
+                  <span className="absolute -left-[9px] top-0 flex items-center justify-center w-4 h-4 bg-teal-800 rounded-full" />
+                  {/* Content with Icon + Summary */}
+                  <div className="flex items-start">
+                    {exp.icon}
+                    <p className="text-stone-300 text-sm md:text-base">
+                      {exp.summary}
+                    </p>
+                  </div>
+                </motion.div>
+              </a>
             ))}
           </div>
         </motion.section>
@@ -275,7 +281,6 @@ const Portfolio = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          {/* Use Link to go to /bachelor-thesis route */}
           <Link to="/bachelor-thesis">
             <div className="bg-zinc-900/30 border-l-4 border-gray-800 p-4 hover:shadow-xl transition-all duration-300 hover:scale-[1.01] cursor-pointer">
               <h3 className="text-lg font-bold mb-2 text-stone-300">
@@ -289,7 +294,6 @@ const Portfolio = () => {
         </motion.section>
       </motion.div>
     </div>
-
   );
 };
 
