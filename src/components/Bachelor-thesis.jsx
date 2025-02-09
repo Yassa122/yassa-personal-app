@@ -335,7 +335,7 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score, a
                 <motion.div className="mt-8 text-center" variants={itemVariants}>
                     <h2 className="text-2xl font-semibold mb-3">GitHub Repository</h2>
                     <a
-                        href="https://github.com/YourUsername/YourBachelorThesisRepo"
+                        href="https://github.com/Yassa122/Using-XAI-Algorithms-for-Material-Recognition"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-blue-400 hover:underline text-lg"
