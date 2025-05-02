@@ -8,6 +8,7 @@ import {
   FaServer,
   FaLaptopCode,
   FaAtom,
+  FaIndustry,
 } from 'react-icons/fa';
 import yassaPhoto from '../../src/components/logo/99081198.jpeg'; // adjust path as needed
 import { Link } from 'react-router-dom'; // for routing
@@ -81,24 +82,31 @@ const Portfolio = () => {
   const experiences = [
     {
       icon: <FaServer className="text-orange-600 w-5 h-5 mr-2 flex-shrink-0" />,
+
+      icon: <FaServer className="text-orange-600 w-5 h-5 mr-2 flex-shrink-0" />,
       summary:
-        'Mid-level Backend Engineer at Trevi (Oct 2024 - Present, Remote) — Developing a seamlessly innovative finance app that simplifies money management, offers exclusive cash back rewards, and includes a Family Wallet for shared budgeting, all secured with robust backend architectures.',
+        'Mid-level Backend Engineer at Trevi (Oct 2024 – Present, Remote) — Building a finance app with cash-back rewards and a Family Wallet, all powered by a scalable microservices backend.',
       link: 'https://trevi.app',
+    },
+    {
+      icon: <FaIndustry className="text-indigo-500 w-5 h-5 mr-2 flex-shrink-0" />,
+      summary:
+        'Software Engineer Intern at Vodafone Intelligent Solutions (Feb 2025 – Present, Onsite) — Contributing to cloud solutions and automation tools in Smart Village, Cairo as a full-stack developer intern.',
+      link: 'https://vois.vodafone.com',
     },
     {
       icon: <FaLaptopCode className="text-teal-950 w-5 h-5 mr-2 flex-shrink-0" />,
       summary:
-        'Full-Stack Developer at MMSolutions (Jul 2024 - Present, Remote) — Delivering next-level freight dispatch services for Amazon Freight partner carriers, ensuring efficient, reliable, and driver-friendly solutions through modern web technologies.',
+        'Full-Stack Developer at MMSolutions (Jul 2024 – Mar 2025, Remote) — Built a driver-friendly freight dispatch system for Amazon Freight partner carriers, boosting efficiency and reliability.',
       link: 'https://mmsoln.com',
     },
     {
       icon: <FaAtom className="text-teal-950 w-5 h-5 mr-2 flex-shrink-0" />,
       summary:
-        'Full-Stack Developer at Kinetics (Aug 2024 - Oct 2024, Onsite) — Led internal initiatives for front-end modernization and integrated RESTful APIs, improving performance by 30% while driving team adoption of new coding practices.',
+        'Full-Stack Developer at Kinetics (Aug 2024 - Oct 2024, Onsite) — Led front-end modernization and integrated RESTful APIs, improving performance by 30% and driving adoption of best practices.',
       link: 'https://www.kineticsegypt.com/',
     },
   ];
-
   // Updated Bachelor Thesis information
   const bachelorThesis = {
     title: 'Bachelor Thesis',
@@ -189,47 +197,30 @@ const Portfolio = () => {
         </motion.section>
         {/* Divider */}
         <div className="w-full h-px bg-zinc-700 mb-10"></div>
-
-        {/* Work Experience (Vertical Timeline) */}
-        <motion.section
-          id="experience"
-          className="mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
+        <section id="experience" className="mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-8 text-stone-300">
             Experience
           </h2>
-          <div className="relative border-l-4 border-teal-950 ml-4">
-            {experiences.map((exp, index) => (
-              <a
-                href={exp.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                key={index}
-              >
-                <motion.div
-                  className="relative pb-10 pl-8"
-                  initial={{ opacity: 1 }}
-                  whileHover={{ scale: 1.01 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  {/* Marker */}
-                  <span className="absolute -left-[9px] top-0 flex items-center justify-center w-4 h-4 bg-teal-800 rounded-full" />
-                  {/* Content with Icon + Summary */}
-                  <div className="flex items-start">
-                    {exp.icon}
-                    <p className="text-stone-300 text-sm md:text-base">
-                      {exp.summary}
-                    </p>
-                  </div>
-                </motion.div>
-              </a>
+          <ul className="relative ml-6 border-l-2  border-gray-500">
+            {experiences.map((exp, idx) => (
+              <li key={idx} className="mb-8 ml-[25px]  bottom-2 relative">
+                {/* Timeline Marker */}
+                <span className="absolute -left-8 top-2 w-3 h-3 bg-gray-400 rounded-full"></span>
+
+                {/* Date Label */}
+                <time className="block text-gray-400 uppercase text-xs mb-1">
+                  {exp.year || exp.period || exp.date || ''}
+                </time>
+
+                {/* Description */}
+                <p className="text-stone-300 text-base md:text-lg">
+                  {exp.summary}
+                </p>
+              </li>
             ))}
-          </div>
-        </motion.section>
+          </ul>
+        </section>
+
 
         {/* Divider */}
         <div className="w-full h-px bg-zinc-700 mb-10"></div>
