@@ -91,7 +91,7 @@ const Portfolio = () => {
     {
       icon: <FaIndustry className="text-indigo-500 w-5 h-5 mr-2 flex-shrink-0" />,
       summary:
-        'Software Engineer Intern at Vodafone Intelligent Solutions (Feb 2025 – Present, Onsite) — Contributing to cloud solutions and automation tools in Smart Village, Cairo as a full-stack developer intern.',
+        'Software Engineer Intern at Vodafone Intelligent Solutions (Feb 2025 – Present, Onsite) — Contributing to Digital Tooling solutions and automation tools in Smart Village, Cairo as a Software Engineering intern.',
       link: 'https://vois.vodafone.com',
     },
     {
