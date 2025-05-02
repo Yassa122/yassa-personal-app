@@ -1,6 +1,6 @@
 // src/components/BachelorThesisDetails.jsx
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom'; import { motion, AnimatePresence } from 'framer-motion';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -24,7 +24,6 @@ const containerVariants = {
         },
     },
 };
-
 const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -73,8 +72,9 @@ const CodeSnippet = ({ title, code }) => {
 };
 
 const BachelorThesisDetails = () => {
-    const [zoomedImage, setZoomedImage] = useState(null);
+    const navigate = useNavigate();    // ← initialize navigate
 
+    const [zoomedImage, setZoomedImage] = useState(null);
     // Define your code snippets
     const codeSnippets = [
         {
@@ -262,6 +262,19 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score, a
             animate="visible"
         >
             <div className="max-w-4xl w-full">
+                <button
+                    onClick={() => navigate(-1)}
+                    className="
+    sticky top-0
+    z-10
+    bg-transparent
+    px-4 py-2
+    text-stone-400 hover:text-stone-200
+    mb-6
+  "
+                >
+                    ← Back
+                </button>
                 {/* Heading */}
                 <motion.h1 className="text-3xl md:text-4xl font-bold mb-4 text-center" variants={itemVariants}>
                     Bachelor Thesis: Using XAI Algorithms for Material Recognition
