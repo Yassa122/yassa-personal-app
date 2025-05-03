@@ -81,30 +81,132 @@ const Portfolio = () => {
   // Each experience object now includes a 'link' field.
   const experiences = [
     {
-      icon: <FaServer className="text-orange-600 w-5 h-5 mr-2 flex-shrink-0" />,
-
-      icon: <FaServer className="text-orange-600 w-5 h-5 mr-2 flex-shrink-0" />,
-      summary:
-        'Mid-level Backend Engineer at Trevi (Oct 2024 – Present, Remote) — Building a finance app with cash-back rewards and a Family Wallet, all powered by a scalable microservices backend.',
-      link: 'https://trevi.app',
+      title: 'Back End Engineer',
+      company: 'Trevi',
+      type: 'Full-time',
+      period: 'Oct 2024 – Present',
+      duration: '8 mos',
+      location: 'Cairo, Egypt · Hybrid',
+      bullets: [
+        'Developed RESTful APIs and middleware for API development at Trevi.',
+        'Implemented authentication, authorization, and data protection for enhanced security measures.',
+      ],
+      skills: [
+        'DevOps',
+        'Git',
+        'Microservices',
+        'NestJS',
+        'Problem Solving',
+        'TypeScript',
+        'Agile Methodologies',
+      ],
     },
     {
-      icon: <FaIndustry className="text-indigo-500 w-5 h-5 mr-2 flex-shrink-0" />,
-      summary:
-        'Software Engineer Intern at Vodafone Intelligent Solutions (Feb 2025 – Present, Onsite) — Contributing to Digital Tooling solutions and automation tools in Smart Village, Cairo as a Software Engineering intern.',
-      link: 'https://vois.vodafone.com',
+      title: 'Associate Software Engineer Intern',
+      company: 'VOIS (TES)',
+      type: 'Internship',
+      period: 'Feb 2025 – Apr 2025',
+      duration: '3 mos',
+      location: 'Cairo, Egypt · Hybrid',
+      bullets: [
+        'Contributed to enterprise-level order management solutions.',
+        'Built backend & frontend features to improve functionality and UX.',
+        'Addressed bugs and added advanced filtering for operational efficiency.',
+        'Reviewed code and mentored junior team members to maintain quality.',
+        'Participated in stakeholder presentations to align on business goals.',
+      ],
+      skills: [
+        'ASP.NET Web API',
+        'Angular',
+        'N-Tier Architecture',
+        'Git',
+        'Ticketing Systems',
+      ],
     },
     {
-      icon: <FaLaptopCode className="text-teal-950 w-5 h-5 mr-2 flex-shrink-0" />,
-      summary:
-        'Full-Stack Developer at MMSolutions (Jul 2024 – Mar 2025, Remote) — Built a driver-friendly freight dispatch system for Amazon Freight partner carriers, boosting efficiency and reliability.',
-      link: 'https://mmsoln.com',
+      title: 'Software Engineering Consultant',
+      company: 'MM Solutions',
+      type: 'Contract',
+      period: 'Dec 2024 – Mar 2025',
+      duration: '4 mos',
+      location: 'United States · Remote',
+      bullets: [
+        'Led development of scalable software solutions.',
+        'Provided technical guidance to ensure best practices & code quality.',
+        'Collaborated cross-functionally to optimize workflows and tech stack.',
+      ],
+      skills: [
+        'Next.js',
+        'DevOps',
+        'Git',
+        'Problem Solving',
+        'Agile Methodologies',
+      ],
     },
     {
-      icon: <FaAtom className="text-teal-950 w-5 h-5 mr-2 flex-shrink-0" />,
-      summary:
-        'Full-Stack Developer at Kinetics (Aug 2024 - Oct 2024, Onsite) — Led front-end modernization and integrated RESTful APIs, improving performance by 30% and driving adoption of best practices.',
-      link: 'https://www.kineticsegypt.com/',
+      title: 'Full-stack Developer',
+      company: 'MM Solutions',
+      type: 'Contract',
+      period: 'Jul 2024 – Dec 2024',
+      duration: '6 mos',
+      location: 'United States · Remote',
+      bullets: [
+        'Built PHP/Laravel apps with HTML, CSS, Bootstrap & Tailwind for UX.',
+        'Collaborated with cross-functional teams for seamless deployments.',
+        'Applied best practices to boost performance and meet project goals.',
+      ],
+      skills: ['PHP', 'Laravel', 'HTML', 'CSS', 'Bootstrap', 'TailwindCSS'],
+    },
+    {
+      title: 'Full-stack Developer',
+      company: 'Kinetics Dubai',
+      type: 'Full-time',
+      period: 'Aug 2024 – Oct 2024',
+      duration: '3 mos',
+      location: 'Cairo, Egypt · On-site',
+      bullets: [
+        'Worked with React.js, Node.js, Bootstrap, HTML & CSS to modernize UI.',
+      ],
+      skills: [
+        'React.js',
+        'Node.js',
+        'Bootstrap',
+        'HTML',
+        'CSS',
+        'Agile Methodologies',
+      ],
+    },
+    {
+      title: 'Full Stack Developer',
+      company: 'Fiverr',
+      type: 'Freelance',
+      period: 'May 2023 – Oct 2023',
+      duration: '6 mos',
+      location: 'Remote',
+      bullets: [
+        'Designed custom web apps with high performance and intuitive UI.',
+        'Built Python-based stock prediction apps (incl. Robinhood data).',
+        'Created 2D games in Java & C++ per client specs.',
+        'Collaborated globally to deliver high-quality, remote solutions.',
+      ],
+      skills: [
+        'Prediction Markets',
+        'Predictive Modeling',
+        'JavaScript',
+        'Python',
+        'Java',
+        'C++',
+      ],
+    },
+    {
+      title: 'Full Stack Developer',
+      company: 'Instatus',
+      type: 'Internship',
+      period: 'Jul 2022 – Sep 2022',
+      duration: '3 mos',
+      location: 'Remote',
+      bullets: [],
+      skills: ['Next.js', 'GraphQL'],
     },
   ];
   // Updated Bachelor Thesis information
@@ -119,7 +221,7 @@ const Portfolio = () => {
   return (
     <div className="min-h-screen bg-black text-stone-300 px-6 py-10 flex justify-center font-inter">
       <motion.div
-        className="max-w-4xl w-full"
+        className="max-w-xl w-full"
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -184,10 +286,10 @@ const Portfolio = () => {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight text-stone-300">
+          <h1 className="text-4xl md:text-3xl font-bold mb-4 leading-tight text-stone-300">
             Hello! I’m Yassa
           </h1>
-          <p className="mb-8 text-lg md:text-xl text-stone-300 leading-relaxed">
+          <p className="mb-8 text-lg md:text-l text-stone-300 leading-relaxed">
             I’m a Full-Stack developer who loves building user-friendly, scalable
             applications. I regularly explore cutting-edge technologies and share
             my knowledge with other developers through online content and mentorship.
@@ -195,27 +297,64 @@ const Portfolio = () => {
             Next.js to create impactful solutions.
           </p>
         </motion.section>
+
         {/* Divider */}
-        <div className="w-full h-px bg-zinc-700 mb-10"></div>
+        <div className="w-full h-px bg-zinc-700 mb-10 "></div>
         <section id="experience" className="mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-8 text-stone-300">
             Experience
           </h2>
-          <ul className="relative ml-6 border-l-2  border-gray-500">
+
+          {/* 1. Border lives here now: */}
+
+          <ul className="relative border-l-2 border-gray-500 pl-9 space-y-12">
             {experiences.map((exp, idx) => (
-              <li key={idx} className="mb-8 ml-[25px]  bottom-2 relative">
-                {/* Timeline Marker */}
-                <span className="absolute -left-8 top-2 w-3 h-3 bg-gray-400 rounded-full"></span>
+              <li key={idx} className="relative">
+                {/* 2. Marker sits on the UL’s line */}
+                <span
+                  className="
+            absolute
+            left-[-42.5px] /* offset from the left border */
+            top-0      /* align with the very top of this <li> */
+            w-3 h-3
+            bg-gray-400
+            rounded-full
+          "
+                ></span>
 
-                {/* Date Label */}
-                <time className="block text-gray-400 uppercase text-xs mb-1">
-                  {exp.year || exp.period || exp.date || ''}
-                </time>
+                {/* Header row */}
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
+                  <div>
+                    <h3 className="text-stone-100 font-semibold">{exp.title}</h3>
+                    <p className="text-gray-400 text-sm">
+                      {exp.company} &middot; {exp.type}
+                    </p>
+                  </div>
+                  <div className="mt-1 sm:mt-0 text-xs text-gray-400">
+                    <time>{exp.period}</time>
+                    <span> &middot; {exp.duration}</span>
+                  </div>
+                </div>
 
-                {/* Description */}
-                <p className="text-stone-300 text-base md:text-lg">
-                  {exp.summary}
-                </p>
+                {/* Location */}
+                <p className="text-gray-300 mt-1">{exp.location}</p>
+
+                {/* Bullets */}
+                {exp.bullets.length > 0 && (
+                  <ul className="list-disc list-inside mt-2 text-gray-300 space-y-1">
+                    {exp.bullets.map((b, i2) => (
+                      <li key={i2}>{b}</li>
+                    ))}
+                  </ul>
+                )}
+
+                {/* Skills */}
+                {exp.skills.length > 0 && (
+                  <p className="text-gray-400 text-xs mt-3">
+                    <span className="font-semibold">Skills:</span>{' '}
+                    {exp.skills.join(' · ')}
+                  </p>
+                )}
               </li>
             ))}
           </ul>
@@ -223,6 +362,27 @@ const Portfolio = () => {
 
 
         {/* Divider */}
+        <div className="w-full h-px bg-zinc-700 mb-10"></div>
+        {/* Bachelor Thesis */}
+        <motion.section
+          id="bachelor-thesis"
+          className="mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <Link to="/bachelor-thesis">
+            <div className="bg-zinc-900/30 border-l-4 border-gray-800 p-4 hover:shadow-xl transition-all duration-300 hover:scale-[1.01] cursor-pointer">
+              <h3 className="text-lg font-bold mb-2 text-stone-300">
+                {bachelorThesis.subject} ({bachelorThesis.year})
+              </h3>
+              <p className="text-gray-300 text-sm md:text-base mb-2">
+                {bachelorThesis.description}
+              </p>
+            </div>
+          </Link>
+        </motion.section>
         <div className="w-full h-px bg-zinc-700 mb-10"></div>
 
         {/* Projects */}
@@ -261,28 +421,8 @@ const Portfolio = () => {
         </motion.section>
 
         {/* Divider */}
-        <div className="w-full h-px bg-zinc-700 mb-10"></div>
 
-        {/* Bachelor Thesis */}
-        <motion.section
-          id="bachelor-thesis"
-          className="mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <Link to="/bachelor-thesis">
-            <div className="bg-zinc-900/30 border-l-4 border-gray-800 p-4 hover:shadow-xl transition-all duration-300 hover:scale-[1.01] cursor-pointer">
-              <h3 className="text-lg font-bold mb-2 text-stone-300">
-                {bachelorThesis.subject} ({bachelorThesis.year})
-              </h3>
-              <p className="text-gray-300 text-sm md:text-base mb-2">
-                {bachelorThesis.description}
-              </p>
-            </div>
-          </Link>
-        </motion.section>
+
       </motion.div>
     </div>
   );
