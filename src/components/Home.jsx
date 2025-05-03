@@ -363,6 +363,9 @@ const Portfolio = () => {
 
         {/* Divider */}
         <div className="w-full h-px bg-zinc-700 mb-10"></div>
+        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-stone-300">
+          Bachelor Thesis Project
+        </h2>
         {/* Bachelor Thesis */}
         <motion.section
           id="bachelor-thesis"
