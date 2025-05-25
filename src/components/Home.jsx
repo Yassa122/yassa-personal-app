@@ -5,6 +5,7 @@ import {
   FaLinkedin,
   FaGithub,
   FaEnvelope,
+  FaDownload,
   FaServer,
   FaLaptopCode,
   FaAtom,
@@ -216,12 +217,37 @@ const Portfolio = () => {
     year: 2025,
     description:
       'Focused on predicting molecular chemical properties of compounds and providing interpretability around these predictions using explainable AI methodologies.',
+    skills: [
+      'Python',
+      'PyTorch',
+      'DistilBERT',
+      'XAI',
+      'SHAP',
+      'LIME',
+      'AWS Lambda',
+      'EventBridge',
+      'Step Functions',
+      'SageMaker'
+    ],
+  };
+
+  const allSkills = [...new Set(experiences.flatMap(e => e.skills)),      ...bachelorThesis.skills,
+  ];
+  // Smooth-scroll to the first element that carries the same data-skill
+  const handleSkillClick = (skill) => {
+    const target = document.querySelector(`[data-skill="${skill}"]`);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // temporary highlight
+      target.classList.add('ring-2', 'ring-teal-500');
+      setTimeout(() => target.classList.remove('ring-2', 'ring-teal-500'), 2000);
+    }
   };
 
   return (
     <div className="min-h-screen bg-black text-stone-300 px-6 py-10 flex justify-center font-inter">
       <motion.div
-        className="max-w-xl w-full"
+        className="max-w-3xl w-full"
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -235,7 +261,6 @@ const Portfolio = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              {/* Profile Photo */}
               <img
                 src={yassaPhoto}
                 alt="Yassa Ashraf"
@@ -250,7 +275,7 @@ const Portfolio = () => {
             </motion.div>
 
             <motion.div
-              className="flex items-center space-x-4"
+              className="flex items-center space-x-4 mt-4 md:mt-0"
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
@@ -273,6 +298,14 @@ const Portfolio = () => {
               >
                 <FaEnvelope size={22} />
               </a>
+              <a
+                href="/Yassa_Ashraf_CV.pdf"
+                download
+                className="ml-2 flex items-center gap-1 px-3 py-1 rounded-md border border-teal-900 text-stone-300 text-sm hover:bg-teal-900/20 transition-colors duration-300"
+              >
+                <FaDownload size={16} />
+                CV
+              </a>
             </motion.div>
           </div>
         </header>
@@ -287,10 +320,10 @@ const Portfolio = () => {
           viewport={{ once: true }}
         >
           <h1 className="text-4xl md:text-3xl font-bold mb-4 leading-tight text-stone-300">
-            Hello! I’m Yassa
+            Hello! I'm Yassa
           </h1>
           <p className="mb-8 text-lg md:text-l text-stone-300 leading-relaxed">
-            I’m a Full-Stack developer who loves building user-friendly, scalable
+            I'm a Full-Stack developer who loves building user-friendly, scalable
             applications. I regularly explore cutting-edge technologies and share
             my knowledge with other developers through online content and mentorship.
             Currently, I work extensively with JavaScript, TypeScript, React, and
@@ -307,15 +340,15 @@ const Portfolio = () => {
 
           {/* 1. Border lives here now: */}
 
-          <ul className="relative border-l-2 border-gray-500 pl-9 space-y-12">
+          <ul className="relative border-l-2 border-gray-700 pl-9 space-y-12 pt-4">
             {experiences.map((exp, idx) => (
               <li key={idx} className="relative">
-                {/* 2. Marker sits on the UL’s line */}
+                {/* 2. Marker sits on the UL's line */}
                 <span
                   className="
             absolute
-            left-[-42.5px] /* offset from the left border */
-            top-0      /* align with the very top of this <li> */
+            left-[-42.8px]
+            top-2
             w-3 h-3
             bg-gray-400
             rounded-full
@@ -350,11 +383,19 @@ const Portfolio = () => {
 
                 {/* Skills */}
                 {exp.skills.length > 0 && (
-                  <p className="text-gray-400 text-xs mt-3">
-                    <span className="font-semibold">Skills:</span>{' '}
-                    {exp.skills.join(' · ')}
-                  </p>
+                  <div className="flex flex-wrap gap-2 mt-3">
+                    {exp.skills.map((s) => (
+                      <span
+                        key={s}
+                        data-skill={s}
+                        className="bg-zinc-800/50 border border-zinc-700 px-3 py-1 rounded-full text-sm text-gray-300"
+                      >
+                        {s}
+                      </span>
+                    ))}
+                  </div>
                 )}
+
               </li>
             ))}
           </ul>
@@ -366,7 +407,7 @@ const Portfolio = () => {
         <h2 className="text-3xl md:text-4xl font-bold mb-8 text-stone-300">
           Bachelor Thesis Project
         </h2>
-        {/* Bachelor Thesis */}
+
         <motion.section
           id="bachelor-thesis"
           className="mb-16"
@@ -380,13 +421,58 @@ const Portfolio = () => {
               <h3 className="text-lg font-bold mb-2 text-stone-300">
                 {bachelorThesis.subject} ({bachelorThesis.year})
               </h3>
-              <p className="text-gray-300 text-sm md:text-base mb-2">
+              <p className="text-gray-300 text-sm md:text-base mb-4">
                 {bachelorThesis.description}
               </p>
+
+              {/* Skills */}
+              <div className="flex flex-wrap gap-2">
+                {bachelorThesis.skills.map((s) => (
+                  <span
+                    key={s}
+                    data-skill={s}
+                    className="bg-zinc-800/50 border border-zinc-700 px-3 py-1 rounded-full text-sm text-gray-300"
+                  >
+                    {s}
+                  </span>
+                ))}
+              </div>
             </div>
           </Link>
         </motion.section>
+
         <div className="w-full h-px bg-zinc-700 mb-10"></div>
+
+
+
+        <motion.section
+          id="skills"
+          className="mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-stone-300">
+            Skills
+          </h2>
+          <div className="flex flex-wrap gap-3">
+            {allSkills.map((skill) => (
+              <motion.button
+                key={skill}
+                onClick={() => handleSkillClick(skill)}
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                className="bg-zinc-900/20 border border-zinc-700 px-4 py-2 rounded-full text-base text-stone-300 hover:border-teal-900 hover:text-teal-700 transform transition-colors duration-300"
+              >
+                {skill}
+              </motion.button>
+            ))}
+          </div>
+
+
+        </motion.section>
 
         {/* Projects */}
         <motion.section
