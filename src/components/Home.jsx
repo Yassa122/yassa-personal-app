@@ -1,5 +1,5 @@
 // src/components/Portfolio.jsx
-import React, { useState, useEffect } from 'react';
+No
 import { motion } from 'framer-motion';
 import {
   FaLinkedin,
