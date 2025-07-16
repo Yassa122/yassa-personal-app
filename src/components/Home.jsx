@@ -1,5 +1,6 @@
 // src/components/Portfolio.jsx
-No
+
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import {
   FaLinkedin,
@@ -82,11 +83,32 @@ const Portfolio = () => {
   // Each experience object now includes a 'link' field.
   const experiences = [
     {
+      title: 'Software Engineer',
+      company: 'Xylem Software',
+      type: 'Full-time',
+      period: 'Jun 2025 – Present',
+      duration: 'Present',
+      location: 'Remote · Dubai, United Arab Emirates',
+      bullets: [
+        'Developing software solutions and AI products using Next.js and Node.js.',
+        'Building and deploying machine learning and deep learning models for various business needs.',
+        'Collaborating with cross-functional teams to deliver innovative technology solutions.'
+      ],
+      skills: [
+        'Next.js',
+        'Node.js',
+        'Machine Learning',
+        'Deep Learning',
+        'AI',
+        'Software Solutions'
+      ],
+    },
+    {
       title: 'Back End Engineer',
       company: 'Trevi',
       type: 'Full-time',
-      period: 'Oct 2024 – Present',
-      duration: '8 mos',
+      period: 'Oct 2024 – Aug 2025',
+      duration: '11 mos',
       location: 'Cairo, Egypt · Hybrid',
       bullets: [
         'Developed RESTful APIs and middleware for API development at Trevi.',
@@ -102,6 +124,7 @@ const Portfolio = () => {
         'Agile Methodologies',
       ],
     },
+
     {
       title: 'Associate Software Engineer Intern',
       company: 'VOIS (TES)',
@@ -231,7 +254,7 @@ const Portfolio = () => {
     ],
   };
 
-  const allSkills = [...new Set(experiences.flatMap(e => e.skills)),      ...bachelorThesis.skills,
+  const allSkills = [...new Set(experiences.flatMap(e => e.skills)), ...bachelorThesis.skills,
   ];
   // Smooth-scroll to the first element that carries the same data-skill
   const handleSkillClick = (skill) => {
@@ -247,16 +270,16 @@ const Portfolio = () => {
   return (
     <div className="min-h-screen bg-black text-stone-300 px-6 py-10 flex justify-center font-inter">
       <motion.div
-        className="max-w-3xl w-full"
+        className="max-w-3xl w-full text-left"
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
         {/* Header */}
         <header className="mb-12">
-          <div className="flex flex-col md:flex-row gap-x-8">
+          <div className="flex flex-row gap-x-8 items-start">
             <motion.div
-              className="flex items-center space-x-4"
+              className="flex flex-row items-start space-x-4"
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
