@@ -130,7 +130,7 @@ const Portfolio = () => {
       company: 'VOIS (TES)',
       type: 'Internship',
       period: 'Feb 2025 – Apr 2025',
-      duration: '3 mos',
+      duration: '6 mos',
       location: 'Cairo, Egypt · Hybrid',
       bullets: [
         'Contributed to enterprise-level order management solutions.',
