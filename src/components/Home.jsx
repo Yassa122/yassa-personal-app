@@ -128,7 +128,7 @@ const Portfolio = () => {
     {
       title: 'Associate Software Engineer Intern',
       company: 'VOIS (TES)',
-      type: 'Internship',
+      type: 'Internship', 
       period: 'Feb 2025 – Apr 2025',
       duration: '6 mos',
       location: 'Cairo, Egypt · Hybrid',
