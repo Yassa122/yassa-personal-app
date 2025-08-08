@@ -17,10 +17,14 @@ const VISITORS_COLLECTION = 'visitors';
 // Add a new visitor or update existing visitor
 export const saveVisitor = async (visitorData) => {
     try {
-        // Check if visitor already exists by fingerprint
+        // Prefer persistent visitorId if available; fallback to fingerprint
+        const identifierField = visitorData.visitorId ? 'visitorId' : 'fingerprint';
+        const identifierValue = visitorData.visitorId || visitorData.fingerprint;
+
+        // Check if visitor already exists by identifier
         const existingVisitorQuery = query(
             collection(db, VISITORS_COLLECTION),
-            where('fingerprint', '==', visitorData.fingerprint)
+            where(identifierField, '==', identifierValue)
         );
 
         const existingVisitors = await getDocs(existingVisitorQuery);
