@@ -159,7 +159,7 @@ const VisitorTracker = () => {
     // Get IP from server (Cloud Functions behind Firebase Hosting)
     const getServerIpInfo = async () => {
       try {
-        const r = await fetch('/api/collect', { 
+        const r = await fetch('/api/collect', {
           method: 'GET',
           cache: 'no-store',
           headers: {
