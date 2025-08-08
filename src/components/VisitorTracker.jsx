@@ -4,19 +4,48 @@ import { saveVisitor } from '../firebase/visitorService';
 const VisitorTracker = () => {
   useEffect(() => {
     const trackVisitor = async () => {
-      // Get basic visitor information
+      const visitorId = getPersistentVisitorId();
+      const uaHints = await getUserAgentHints();
+      const batteryInfo = await getBatteryInfo();
+      const storageInfo = await getStorageInfo();
+      const permissions = await getPermissionsStatus();
+      const mediaDevices = await getMediaDevicesInfo();
+
+      // Get basic and enhanced visitor information
       const visitorData = {
+        visitorId,
         timestamp: new Date().toISOString(),
         userAgent: navigator.userAgent,
         language: navigator.language,
+        languages: navigator.languages || [],
         platform: navigator.platform,
+        vendor: navigator.vendor,
         screenResolution: typeof window !== 'undefined' ? `${window.screen.width}x${window.screen.height}` : 'N/A',
         viewport: typeof window !== 'undefined' ? `${window.innerWidth}x${window.innerHeight}` : 'N/A',
+        devicePixelRatio: typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1,
+        orientation: (window.screen.orientation && (window.screen.orientation.type || window.screen.orientation.angle)) || null,
+        colorDepth: window.screen.colorDepth,
+        pixelDepth: window.screen.pixelDepth,
+        prefersDarkMode: typeof window !== 'undefined' && window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)').matches : false,
+        prefersReducedMotion: typeof window !== 'undefined' && window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false,
+        maxTouchPoints: navigator.maxTouchPoints || 0,
         referrer: typeof document !== 'undefined' ? document.referrer || 'Direct' : 'N/A',
         url: typeof window !== 'undefined' ? window.location.href : 'N/A',
+        path: typeof window !== 'undefined' ? window.location.pathname + window.location.search + window.location.hash : 'N/A',
         timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-        // Generate a simple fingerprint based on browser characteristics
-        fingerprint: generateFingerprint(),
+        timezoneOffsetMinutes: new Date().getTimezoneOffset(),
+        isOnline: navigator.onLine,
+        hardwareConcurrency: navigator.hardwareConcurrency || null,
+        deviceMemory: navigator.deviceMemory || null,
+        // UA-CH fields
+        ...uaHints,
+        // Battery & storage & permissions & media devices
+        battery: batteryInfo,
+        storage: storageInfo,
+        permissions,
+        mediaDevices,
+        // Robust fingerprint
+        fingerprint: await generateRobustFingerprint({ uaHints }),
       };
 
       // Get additional device information
@@ -117,6 +146,131 @@ const VisitorTracker = () => {
       return networkInfo;
     };
 
+    // Helper functions
+    const getPersistentVisitorId = () => {
+      try {
+        const key = 'portfolioVisitorId';
+        const existing = localStorage.getItem(key);
+        if (existing) return existing;
+        const newId = (window.crypto && window.crypto.randomUUID) ? window.crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+        localStorage.setItem(key, newId);
+        return newId;
+      } catch (_) {
+        return `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+      }
+    };
+
+    const getUserAgentHints = async () => {
+      try {
+        const ua = navigator.userAgentData;
+        if (!ua || !ua.getHighEntropyValues) {
+          return {};
+        }
+        const high = await ua.getHighEntropyValues([
+          'architecture',
+          'bitness',
+          'model',
+          'platform',
+          'platformVersion',
+          'fullVersionList',
+          'wow64'
+        ]);
+        return {
+          uaMobile: ua.mobile || null,
+          uaBrands: ua.brands || null,
+          uaArchitecture: high.architecture || null,
+          uaBitness: high.bitness || null,
+          uaModel: high.model || null,
+          uaPlatform: high.platform || null,
+          uaPlatformVersion: high.platformVersion || null,
+          uaFullVersionList: high.fullVersionList || null,
+          uaWow64: high.wow64 || null
+        };
+      } catch (_) {
+        return {};
+      }
+    };
+
+    const getBatteryInfo = async () => {
+      try {
+        if (navigator.getBattery) {
+          const b = await navigator.getBattery();
+          return {
+            charging: b.charging,
+            level: b.level,
+            chargingTime: b.chargingTime,
+            dischargingTime: b.dischargingTime,
+          };
+        }
+      } catch (_) { }
+      return null;
+    };
+
+    const getStorageInfo = async () => {
+      try {
+        if (navigator.storage && navigator.storage.estimate) {
+          const { quota, usage } = await navigator.storage.estimate();
+          return { quota, usage };
+        }
+      } catch (_) { }
+      return null;
+    };
+
+    const getPermissionsStatus = async () => {
+      const names = ['geolocation', 'notifications', 'camera', 'microphone'];
+      const results = {};
+      try {
+        if (!navigator.permissions || !navigator.permissions.query) return results;
+        await Promise.all(names.map(async (name) => {
+          try {
+            const status = await navigator.permissions.query({ name });
+            results[name] = status.state;
+          } catch (_) { }
+        }));
+      } catch (_) { }
+      return results;
+    };
+
+    const getMediaDevicesInfo = async () => {
+      try {
+        if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) return null;
+        const list = await navigator.mediaDevices.enumerateDevices();
+        const counts = { audioinput: 0, audiooutput: 0, videoinput: 0 };
+        list.forEach(d => { if (counts[d.kind] !== undefined) counts[d.kind]++; });
+        return counts;
+      } catch (_) {
+        return null;
+      }
+    };
+
+    const generateRobustFingerprint = async (extras = {}) => {
+      try {
+        const parts = [
+          navigator.userAgent,
+          navigator.language,
+          JSON.stringify(navigator.languages || []),
+          navigator.platform,
+          navigator.vendor,
+          (window.screen && `${window.screen.width}x${window.screen.height}x${window.screen.colorDepth}`) || '',
+          String(window.devicePixelRatio || 1),
+          String(new Date().getTimezoneOffset()),
+          String(navigator.hardwareConcurrency || ''),
+          String(navigator.deviceMemory || ''),
+          JSON.stringify(extras.uaHints || {})
+        ].join('||');
+        if (window.crypto && window.crypto.subtle) {
+          const data = new TextEncoder().encode(parts);
+          const digest = await window.crypto.subtle.digest('SHA-256', data);
+          const hashArray = Array.from(new Uint8Array(digest));
+          const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+          return hashHex.slice(0, 32);
+        }
+        return btoa(parts).slice(0, 32);
+      } catch (_) {
+        return btoa(`${navigator.userAgent}|${navigator.language}`).slice(0, 16);
+      }
+    };
+
     // Helper functions for device detection
     const getDeviceType = (userAgent) => {
       if (/Mobile|Android|iPhone|iPad/.test(userAgent)) {
@@ -189,24 +343,7 @@ const VisitorTracker = () => {
       }
     };
 
-    // Generate a simple fingerprint based on browser characteristics
-    const generateFingerprint = () => {
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      ctx.textBaseline = 'top';
-      ctx.font = '14px Arial';
-      ctx.fillText('Fingerprint', 2, 2);
-
-      const fingerprint = [
-        navigator.userAgent,
-        navigator.language,
-        window.screen.width + 'x' + window.screen.height,
-        new Date().getTimezoneOffset(),
-        ctx.getImageData(0, 0, 1, 1).data[0]
-      ].join('|');
-
-      return btoa(fingerprint).slice(0, 16); // Simple hash
-    };
+    // (removed legacy simple fingerprint helper)
 
     // Track visitor on component mount
     trackVisitor();
