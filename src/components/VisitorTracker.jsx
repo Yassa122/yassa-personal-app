@@ -51,12 +51,22 @@ const VisitorTracker = () => {
       // Get additional device information
       const deviceInfo = getDeviceInfo();
       const networkInfo = await getNetworkInfo();
+      const serverIpInfo = await getServerIpInfo();
 
       // Merge all information
       const enhancedVisitorData = {
         ...visitorData,
         ...deviceInfo,
-        ...networkInfo
+        ...networkInfo,
+        // Server-derived IP (more reliable)
+        serverIp: serverIpInfo.ipAddress || undefined,
+        serverLocation: serverIpInfo.location || undefined,
+        serverCountry: serverIpInfo.country || undefined,
+        serverRegion: serverIpInfo.region || undefined,
+        serverCity: serverIpInfo.city || undefined,
+        serverLatitude: serverIpInfo.latitude || undefined,
+        serverLongitude: serverIpInfo.longitude || undefined,
+        serverIsp: serverIpInfo.isp || undefined
       };
 
       // Save visitor data to Firebase
@@ -144,6 +154,17 @@ const VisitorTracker = () => {
       }
 
       return networkInfo;
+    };
+
+    // Get IP from server (Cloud Functions behind Firebase Hosting)
+    const getServerIpInfo = async () => {
+      try {
+        const r = await fetch('/api/collect', { cache: 'no-store' });
+        if (!r.ok) return {};
+        return await r.json();
+      } catch (_) {
+        return {};
+      }
     };
 
     // Helper functions
