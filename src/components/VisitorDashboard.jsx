@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaUsers, FaEye, FaGlobe, FaDesktop, FaMobile, FaTablet, FaSignOutAlt, FaInfoCircle, FaDatabase } from 'react-icons/fa';
+import { FaUsers, FaEye, FaGlobe, FaDesktop, FaMobile, FaTablet, FaSignOutAlt, FaDatabase } from 'react-icons/fa';
 import AdminAuth from './AdminAuth';
 import VisitorDetailModal from './VisitorDetailModal';
-import { getVisitors, clearAllVisitors, getVisitorAnalytics } from '../firebase/visitorService';
+import { getVisitors, clearAllVisitors } from '../firebase/visitorService';
 
 const VisitorDashboard = () => {
   const [visitors, setVisitors] = useState([]);
@@ -11,6 +11,7 @@ const VisitorDashboard = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState('lastVisit');
   const [sortOrder, setSortOrder] = useState('desc');
+  const [osFilter, setOsFilter] = useState('all');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [selectedVisitor, setSelectedVisitor] = useState(null);
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
@@ -33,6 +34,11 @@ const VisitorDashboard = () => {
       visitor.referrer.toLowerCase().includes(searchTerm.toLowerCase()) ||
       visitor.url.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
+    // OS filter
+    if (osFilter !== 'all') {
+      filtered = filtered.filter(v => (v.os || '').toLowerCase() === osFilter);
+    }
 
     // Sort visitors
     filtered.sort((a, b) => {
@@ -64,7 +70,7 @@ const VisitorDashboard = () => {
     });
 
     setFilteredVisitors(filtered);
-  }, [visitors, searchTerm, sortBy, sortOrder]);
+  }, [visitors, searchTerm, sortBy, sortOrder, osFilter]);
 
   const loadVisitors = async () => {
     setIsLoading(true);
@@ -292,6 +298,22 @@ const VisitorDashboard = () => {
             >
               {sortOrder === 'asc' ? '↑' : '↓'}
             </button>
+          </div>
+
+          {/* OS Filter */}
+          <div className="flex gap-2">
+            <select
+              value={osFilter}
+              onChange={(e) => setOsFilter(e.target.value)}
+              className="px-4 py-2 bg-zinc-900/30 border border-zinc-700 rounded-lg text-stone-300 focus:outline-none focus:border-teal-500"
+            >
+              <option value="all">All OS</option>
+              <option value="windows">Windows</option>
+              <option value="macos">macOS</option>
+              <option value="android">Android</option>
+              <option value="ios">iOS</option>
+              <option value="linux">Linux</option>
+            </select>
           </div>
 
           <div className="flex gap-2">

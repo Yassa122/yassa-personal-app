@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { saveVisitor } from '../firebase/visitorService';
 
 const VisitorTracker = () => {
@@ -143,20 +143,50 @@ const VisitorTracker = () => {
     };
 
     const getOperatingSystem = () => {
-      const userAgent = navigator.userAgent;
-      if (userAgent.includes('Windows')) return 'Windows';
-      if (userAgent.includes('Mac')) return 'macOS';
-      if (userAgent.includes('Linux')) return 'Linux';
-      if (userAgent.includes('Android')) return 'Android';
-      if (userAgent.includes('iOS')) return 'iOS';
+      const userAgent = navigator.userAgent || '';
+      const platform = navigator.platform || '';
+
+      // iOS detection (covers iPhone, iPad, iPod and iPadOS masquerading as macOS)
+      const isiOSUA = /iPhone|iPad|iPod/i.test(userAgent);
+      const isiPadOS = /Macintosh/i.test(userAgent) && navigator.maxTouchPoints > 1;
+      if (isiOSUA || isiPadOS) return 'iOS';
+
+      if (/Android/i.test(userAgent)) return 'Android';
+      if (/Win/i.test(userAgent) || /Windows/i.test(platform)) return 'Windows';
+      if (/Mac/i.test(platform) || (/Mac OS X/i.test(userAgent) && !isiPadOS)) return 'macOS';
+      if (/Linux/i.test(platform) && !/Android/i.test(userAgent)) return 'Linux';
       return 'Unknown';
     };
 
     const getOSVersion = () => {
-      const userAgent = navigator.userAgent;
+      const ua = navigator.userAgent || '';
       const os = getOperatingSystem();
-      const versionMatch = userAgent.match(new RegExp(`${os}\\s*(\\d+(\\.\\d+)*)`));
-      return versionMatch ? versionMatch[1] : 'Unknown';
+      try {
+        switch (os) {
+          case 'Windows': {
+            const m = ua.match(/Windows NT ([0-9_.]+)/i);
+            return m ? m[1].replace('_', '.') : 'Unknown';
+          }
+          case 'macOS': {
+            const m = ua.match(/Mac OS X ([0-9_]+)/i);
+            return m ? m[1].replace(/_/g, '.') : 'Unknown';
+          }
+          case 'Android': {
+            const m = ua.match(/Android ([0-9.]+)/i);
+            return m ? m[1] : 'Unknown';
+          }
+          case 'iOS': {
+            // iOS on Safari reports like: OS 16_5 like Mac OS X
+            const m = ua.match(/OS ([0-9_]+) like Mac OS X/i);
+            return m ? m[1].replace(/_/g, '.') : 'Unknown';
+          }
+          case 'Linux':
+          default:
+            return 'Unknown';
+        }
+      } catch (_) {
+        return 'Unknown';
+      }
     };
 
     // Generate a simple fingerprint based on browser characteristics
