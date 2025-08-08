@@ -34,38 +34,48 @@ export const saveVisitor = async (visitorData) => {
             const visitorDoc = existingVisitors.docs[0];
             const existingData = visitorDoc.data();
 
-            const updatedData = {
-                ...existingData,
-                visitCount: (existingData.visitCount || 0) + 1,
-                lastVisit: visitorData.timestamp,
-                visits: [
-                    ...(existingData.visits || []),
-                    {
-                        timestamp: visitorData.timestamp,
-                        url: visitorData.url,
-                        referrer: visitorData.referrer
-                    }
-                ],
-                // Update device info if it has changed
-                ...visitorData
-            };
+                  // Filter out undefined values that Firestore doesn't support
+      const cleanVisitorData = Object.fromEntries(
+        Object.entries(visitorData).filter(([_, value]) => value !== undefined)
+      );
+
+      const updatedData = {
+        ...existingData,
+        visitCount: (existingData.visitCount || 0) + 1,
+        lastVisit: visitorData.timestamp,
+        visits: [
+          ...(existingData.visits || []),
+          {
+            timestamp: visitorData.timestamp,
+            url: visitorData.url,
+            referrer: visitorData.referrer
+          }
+        ],
+        // Update device info if it has changed
+        ...cleanVisitorData
+      };
 
             await updateDoc(doc(db, VISITORS_COLLECTION, visitorDoc.id), updatedData);
             return { success: true, visitorId: visitorDoc.id, isNew: false };
         } else {
-            // Add new visitor
-            const newVisitorData = {
-                ...visitorData,
-                visitCount: 1,
-                firstVisit: visitorData.timestamp,
-                lastVisit: visitorData.timestamp,
-                visits: [{
-                    timestamp: visitorData.timestamp,
-                    url: visitorData.url,
-                    referrer: visitorData.referrer
-                }],
-                createdAt: serverTimestamp()
-            };
+                  // Filter out undefined values that Firestore doesn't support
+      const cleanVisitorData = Object.fromEntries(
+        Object.entries(visitorData).filter(([_, value]) => value !== undefined)
+      );
+
+      // Add new visitor
+      const newVisitorData = {
+        ...cleanVisitorData,
+        visitCount: 1,
+        firstVisit: visitorData.timestamp,
+        lastVisit: visitorData.timestamp,
+        visits: [{
+          timestamp: visitorData.timestamp,
+          url: visitorData.url,
+          referrer: visitorData.referrer
+        }],
+        createdAt: serverTimestamp()
+      };
 
             const docRef = await addDoc(collection(db, VISITORS_COLLECTION), newVisitorData);
             return { success: true, visitorId: docRef.id, isNew: true };
