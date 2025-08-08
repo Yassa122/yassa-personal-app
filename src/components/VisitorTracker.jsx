@@ -159,10 +159,22 @@ const VisitorTracker = () => {
     // Get IP from server (Cloud Functions behind Firebase Hosting)
     const getServerIpInfo = async () => {
       try {
-        const r = await fetch('/api/collect', { cache: 'no-store' });
-        if (!r.ok) return {};
-        return await r.json();
-      } catch (_) {
+        const r = await fetch('/api/collect', { 
+          method: 'GET',
+          cache: 'no-store',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        if (!r.ok) {
+          console.warn('Server IP collection failed:', r.status, r.statusText);
+          return {};
+        }
+        const data = await r.json();
+        console.log('Server IP data:', data);
+        return data;
+      } catch (error) {
+        console.warn('Server IP collection error:', error);
         return {};
       }
     };
