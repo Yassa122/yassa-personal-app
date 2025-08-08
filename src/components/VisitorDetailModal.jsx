@@ -114,6 +114,12 @@ const VisitorDetailModal = ({ visitor, isOpen, onClose }) => {
                                     <InfoRow label="Cookie Enabled" value={visitor.cookieEnabled ? 'Yes' : 'No'} />
                                     <InfoRow label="Do Not Track" value={visitor.doNotTrack || 'Not Set'} />
                                     <InfoRow label="Online Status" value={visitor.onLine ? 'Online' : 'Offline'} />
+                                    {/* UA Client Hints */}
+                                    {visitor.uaPlatform && <InfoRow label="UA Platform" value={`${visitor.uaPlatform} ${visitor.uaPlatformVersion || ''}`} />}
+                                    {visitor.uaModel && <InfoRow label="UA Model" value={visitor.uaModel} />}
+                                    {visitor.uaArchitecture && <InfoRow label="UA Architecture" value={visitor.uaArchitecture} />}
+                                    {visitor.uaBitness && <InfoRow label="UA Bitness" value={visitor.uaBitness} />}
+                                    {visitor.uaMobile !== undefined && <InfoRow label="UA Mobile" value={String(visitor.uaMobile)} />}
                                 </div>
                             </InfoSection>
 
@@ -127,6 +133,21 @@ const VisitorDetailModal = ({ visitor, isOpen, onClose }) => {
                                             <InfoRow label="Connection Type" value={visitor.connection.effectiveType} />
                                             <InfoRow label="Download Speed" value={`${visitor.connection.downlink} Mbps`} />
                                             <InfoRow label="Round Trip Time" value={`${visitor.connection.rtt} ms`} />
+                                        </>
+                                    )}
+                                    {/* Battery */}
+                                    {visitor.battery && (
+                                        <>
+                                            <InfoRow label="Battery Level" value={visitor.battery.level} />
+                                            <InfoRow label="Charging" value={visitor.battery.charging ? 'Yes' : 'No'} />
+                                        </>
+                                    )}
+                                    {/* Media Devices */}
+                                    {visitor.mediaDevices && (
+                                        <>
+                                            <InfoRow label="Cameras" value={visitor.mediaDevices.videoinput} />
+                                            <InfoRow label="Microphones" value={visitor.mediaDevices.audioinput} />
+                                            <InfoRow label="Audio Outputs" value={visitor.mediaDevices.audiooutput} />
                                         </>
                                     )}
                                 </div>
@@ -143,6 +164,21 @@ const VisitorDetailModal = ({ visitor, isOpen, onClose }) => {
                                     <InfoRow label="ISP" value={visitor.isp} />
                                     <InfoRow label="Latitude" value={visitor.latitude} />
                                     <InfoRow label="Longitude" value={visitor.longitude} />
+                                    {/* Permissions */}
+                                    {visitor.permissions && (
+                                        <>
+                                            {Object.entries(visitor.permissions).map(([name, state]) => (
+                                                <InfoRow key={name} label={`Permission: ${name}`} value={state} />
+                                            ))}
+                                        </>
+                                    )}
+                                    {/* Storage */}
+                                    {visitor.storage && (
+                                        <>
+                                            <InfoRow label="Storage Quota" value={visitor.storage.quota} />
+                                            <InfoRow label="Storage Usage" value={visitor.storage.usage} />
+                                        </>
+                                    )}
                                 </div>
                             </InfoSection>
 
