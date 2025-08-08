@@ -1,6 +1,6 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
-const fetch = require('node-fetch');
+// Using global fetch available in Node 18 runtime
 
 admin.initializeApp();
 
