@@ -83,11 +83,76 @@ const Portfolio = () => {
   // Each experience object now includes a 'link' field.
   const experiences = [
     {
-      title: 'Software Engineer',
+      title: 'Associate Software Engineer',
+      company: 'VOIS (TES)',
+      type: 'Full-time',
+      period: 'Jul 2024 – Present',
+      duration: 'Present',
+      location: 'Cairo, Egypt · Hybrid',
+      bullets: [
+        'Contributed to enterprise-level order management solutions.',
+        'Built backend & frontend features to improve functionality and UX.',
+        'Addressed bugs and added advanced filtering for operational efficiency.',
+        'Reviewed code and mentored junior team members to maintain quality.',
+        'Participated in stakeholder presentations to align on business goals.',
+      ],
+      skills: [
+        'ASP.NET Web API',
+        'Angular',
+        'N-Tier Architecture',
+        'Git',
+        'Ticketing Systems',
+      ],
+    },
+    {
+      title: 'Associate Software Engineer Intern',
+      company: 'VOIS (TES)',
+      type: 'Internship', 
+      period: 'Feb 2024 – Jul 2024',
+      duration: '6 mos',
+      location: 'Cairo, Egypt · Hybrid',
+      bullets: [
+        'Contributed to enterprise-level order management solutions.',
+        'Built backend & frontend features to improve functionality and UX.',
+        'Addressed bugs and added advanced filtering for operational efficiency.',
+      ],
+      skills: [
+        'ASP.NET Web API',
+        'Angular',
+        'N-Tier Architecture',
+        'Git',
+        'Ticketing Systems',
+      ],
+    },
+    {
+      title: 'AI Software Engineer',
+      company: 'VIXI-AI',
+      type: 'Full-time',
+      period: 'Sep 2025 – Present',
+      duration: 'Present',
+      location: 'Remote · U.A.E',
+      bullets: [
+        'Developing AI-powered software solutions using Python and Node.js.',
+        'Building and deploying applications with Firebase Functions and Services.',
+        'Deploying scalable solutions on GCP and Azure cloud platforms.',
+        'Creating modern web applications using Next.js for enhanced user experiences.',
+      ],
+      skills: [
+        'Python',
+        'Node.js',
+        'Firebase Functions',
+        'Firebase Services',
+        'GCP',
+        'Azure',
+        'Next.js',
+      ],
+    },
+    {
+      title: 'Full-Stack Engineer',
       company: 'Xylem Software',
       type: 'Full-time',
-      period: 'Jun 2025 – Present',
-      duration: 'Present',
+      period: 'Jun 2025 – Nov 2025',
+      duration: '6 mos',
       location: 'Remote · Dubai, United Arab Emirates',
       bullets: [
         'Developing software solutions and AI products using Next.js and Node.js.',
@@ -107,8 +172,8 @@ const Portfolio = () => {
       title: 'Back End Engineer',
       company: 'Trevi',
       type: 'Full-time',
-      period: 'Oct 2024 – Aug 2025',
-      duration: '11 mos',
+      period: 'Oct 2024 – Sep 2025',
+      duration: '1 yr',
       location: 'Cairo, Egypt · Hybrid',
       bullets: [
         'Developed RESTful APIs and middleware for API development at Trevi.',
@@ -122,29 +187,6 @@ const Portfolio = () => {
         'Problem Solving',
         'TypeScript',
         'Agile Methodologies',
-      ],
-    },
-
-    {
-      title: 'Associate Software Engineer Intern',
-      company: 'VOIS (TES)',
-      type: 'Internship', 
-      period: 'Feb 2025 – Apr 2025',
-      duration: '6 mos',
-      location: 'Cairo, Egypt · Hybrid',
-      bullets: [
-        'Contributed to enterprise-level order management solutions.',
-        'Built backend & frontend features to improve functionality and UX.',
-        'Addressed bugs and added advanced filtering for operational efficiency.',
-        'Reviewed code and mentored junior team members to maintain quality.',
-        'Participated in stakeholder presentations to align on business goals.',
-      ],
-      skills: [
-        'ASP.NET Web API',
-        'Angular',
-        'N-Tier Architecture',
-        'Git',
-        'Ticketing Systems',
       ],
     },
     {
@@ -268,7 +310,7 @@ const Portfolio = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-stone-300 px-6 py-10 flex justify-center font-inter">
+    <div className="min-h-screen bg-black text-stone-300 px-4 sm:px-6 py-8 sm:py-10 flex justify-center font-inter">
       <motion.div
         className="max-w-3xl w-full text-left"
         initial={{ opacity: 0, y: -30 }}
@@ -276,10 +318,10 @@ const Portfolio = () => {
         transition={{ duration: 0.8 }}
       >
         {/* Header */}
-        <header className="mb-12">
-          <div className="flex flex-row gap-x-8 items-start">
+        <header className="mb-10 sm:mb-12">
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 sm:gap-8">
             <motion.div
-              className="flex flex-row items-start space-x-4"
+              className="flex flex-row items-start space-x-3 sm:space-x-4"
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
@@ -287,18 +329,18 @@ const Portfolio = () => {
               <img
                 src={yassaPhoto}
                 alt="Yassa Ashraf"
-                className="w-16 h-16 rounded-full object-cover border-2 border-teal-950"
+                className="w-14 h-14 sm:w-16 sm:h-16 rounded-full object-cover border-2 border-teal-950 flex-shrink-0"
               />
-              <div>
-                <h1 className="text-2xl md:text-3xl font-bold">Yassa Ashraf</h1>
-                <p className="text-stone-400 mt-1 text-sm md:text-base">
-                  Full-Stack Developer
+              <div className="min-w-0">
+                <h1 className="text-xl sm:text-2xl md:text-3xl font-bold leading-tight">Yassa Ashraf</h1>
+                <p className="text-stone-400 mt-1 text-xs sm:text-sm md:text-base">
+                  Software Engineer
                 </p>
               </div>
             </motion.div>
 
             <motion.div
-              className="flex items-center space-x-4 mt-4 md:mt-0"
+              className="flex items-center flex-wrap gap-3 sm:gap-4 sm:mt-0"
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
@@ -306,28 +348,31 @@ const Portfolio = () => {
               <a
                 href="https://www.linkedin.com/in/yassa-ashraf-b59309231/"
                 className="text-stone-400 hover:text-gray-200 transition-colors duration-300"
+                aria-label="LinkedIn"
               >
-                <FaLinkedin size={22} />
+                <FaLinkedin size={20} className="sm:w-[22px] sm:h-[22px]" />
               </a>
               <a
                 href="https://github.com/Yassa122"
                 className="text-stone-400 hover:text-gray-200 transition-colors duration-300"
+                aria-label="GitHub"
               >
-                <FaGithub size={22} />
+                <FaGithub size={20} className="sm:w-[22px] sm:h-[22px]" />
               </a>
               <a
                 href="mailto:yassa.ashraf56@gmail.com"
                 className="text-stone-400 hover:text-stone-200 transition-colors duration-300"
+                aria-label="Email"
               >
-                <FaEnvelope size={22} />
+                <FaEnvelope size={20} className="sm:w-[22px] sm:h-[22px]" />
               </a>
               <a
                 href="/Yassa_Ashraf_CV.pdf"
                 download
-                className="ml-2 flex items-center gap-1 px-3 py-1 rounded-md border border-teal-900 text-stone-300 text-sm hover:bg-teal-900/20 transition-colors duration-300"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-teal-900 text-stone-300 text-xs sm:text-sm hover:bg-teal-900/20 transition-colors duration-300 whitespace-nowrap"
               >
-                <FaDownload size={16} />
-                CV
+                <FaDownload size={14} className="sm:w-4 sm:h-4" />
+                <span>CV</span>
               </a>
             </motion.div>
           </div>
@@ -336,17 +381,17 @@ const Portfolio = () => {
         {/* Introduction */}
         <motion.section
           id="home"
-          className="mb-16"
+          className="mb-12 sm:mb-16"
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h1 className="text-4xl md:text-3xl font-bold mb-4 leading-tight text-stone-300">
+          <h1 className="text-3xl sm:text-4xl md:text-3xl font-bold mb-4 leading-tight text-stone-300">
             Hello! I'm Yassa
           </h1>
-          <p className="mb-8 text-lg md:text-l text-stone-300 leading-relaxed">
-            I'm a Full-Stack developer who loves building user-friendly, scalable
+          <p className="mb-6 sm:mb-8 text-base sm:text-lg md:text-l text-stone-300 leading-relaxed">
+            I'm a Software Engineer who loves building user-friendly, scalable
             applications. I regularly explore cutting-edge technologies and share
             my knowledge with other developers through online content and mentorship.
             Currently, I work extensively with JavaScript, TypeScript, React, and
@@ -355,63 +400,56 @@ const Portfolio = () => {
         </motion.section>
 
         {/* Divider */}
-        <div className="w-full h-px bg-zinc-700 mb-10 "></div>
-        <section id="experience" className="mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-stone-300">
+        <div className="w-full h-px bg-zinc-700 mb-8 sm:mb-10"></div>
+        <section id="experience" className="mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-stone-300">
             Experience
           </h2>
 
-          {/* 1. Border lives here now: */}
-
-          <ul className="relative border-l-2 border-gray-700 pl-9 space-y-12 pt-4">
+          {/* Timeline */}
+          <ul className="relative border-l-2 border-gray-700 pl-6 sm:pl-9 space-y-8 sm:space-y-12 pt-2">
             {experiences.map((exp, idx) => (
               <li key={idx} className="relative">
-                {/* 2. Marker sits on the UL's line */}
+                {/* Timeline marker */}
                 <span
-                  className="
-            absolute
-            left-[-42.8px]
-            top-2
-            w-3 h-3
-            bg-gray-400
-            rounded-full
-          "
+                  className="absolute left-[-19px] sm:left-[-20px] top-2 w-3 h-3 bg-gray-400 rounded-full border-2 border-black"
                 ></span>
 
                 {/* Header row */}
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
-                  <div>
-                    <h3 className="text-stone-100 font-semibold">{exp.title}</h3>
-                    <p className="text-gray-400 text-sm">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-0">
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-stone-100 font-semibold text-base sm:text-lg leading-tight">{exp.title}</h3>
+                    <p className="text-gray-400 text-xs sm:text-sm mt-0.5">
                       {exp.company} &middot; {exp.type}
                     </p>
                   </div>
-                  <div className="mt-1 sm:mt-0 text-xs text-gray-400">
+                  <div className="mt-1 sm:mt-0 text-xs text-gray-400 whitespace-nowrap sm:ml-4">
                     <time>{exp.period}</time>
-                    <span> &middot; {exp.duration}</span>
+                    <span className="hidden sm:inline"> &middot; {exp.duration}</span>
+                    <span className="sm:hidden block mt-0.5">{exp.duration}</span>
                   </div>
                 </div>
 
                 {/* Location */}
-                <p className="text-gray-300 mt-1">{exp.location}</p>
+                <p className="text-gray-300 mt-1.5 text-xs sm:text-sm">{exp.location}</p>
 
                 {/* Bullets */}
                 {exp.bullets.length > 0 && (
-                  <ul className="list-disc list-inside mt-2 text-gray-300 space-y-1">
+                  <ul className="list-disc list-inside mt-3 text-gray-300 space-y-1.5 text-sm sm:text-base">
                     {exp.bullets.map((b, i2) => (
-                      <li key={i2}>{b}</li>
+                      <li key={i2} className="leading-relaxed">{b}</li>
                     ))}
                   </ul>
                 )}
 
                 {/* Skills */}
                 {exp.skills.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mt-3">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-3 sm:mt-4">
                     {exp.skills.map((s) => (
                       <span
                         key={s}
                         data-skill={s}
-                        className="bg-zinc-800/50 border border-zinc-700 px-3 py-1 rounded-full text-sm text-gray-300"
+                        className="bg-zinc-800/50 border border-zinc-700 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm text-gray-300"
                       >
                         {s}
                       </span>
@@ -426,35 +464,35 @@ const Portfolio = () => {
 
 
         {/* Divider */}
-        <div className="w-full h-px bg-zinc-700 mb-10"></div>
-        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-stone-300">
+        <div className="w-full h-px bg-zinc-700 mb-8 sm:mb-10"></div>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-stone-300">
           Bachelor Thesis Project
         </h2>
 
         <motion.section
           id="bachelor-thesis"
-          className="mb-16"
+          className="mb-12 sm:mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
           <Link to="/bachelor-thesis">
-            <div className="bg-zinc-900/30 border-l-4 border-gray-800 p-4 hover:shadow-xl transition-all duration-300 hover:scale-[1.01] cursor-pointer">
-              <h3 className="text-lg font-bold mb-2 text-stone-300">
+            <div className="bg-zinc-900/30 border-l-4 border-gray-800 p-4 sm:p-5 hover:shadow-xl transition-all duration-300 hover:scale-[1.01] cursor-pointer">
+              <h3 className="text-base sm:text-lg font-bold mb-2 text-stone-300 leading-tight">
                 {bachelorThesis.subject} ({bachelorThesis.year})
               </h3>
-              <p className="text-gray-300 text-sm md:text-base mb-4">
+              <p className="text-gray-300 text-sm sm:text-base mb-4 leading-relaxed">
                 {bachelorThesis.description}
               </p>
 
               {/* Skills */}
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 {bachelorThesis.skills.map((s) => (
                   <span
                     key={s}
                     data-skill={s}
-                    className="bg-zinc-800/50 border border-zinc-700 px-3 py-1 rounded-full text-sm text-gray-300"
+                    className="bg-zinc-800/50 border border-zinc-700 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm text-gray-300"
                   >
                     {s}
                   </span>
@@ -464,22 +502,22 @@ const Portfolio = () => {
           </Link>
         </motion.section>
 
-        <div className="w-full h-px bg-zinc-700 mb-10"></div>
+        <div className="w-full h-px bg-zinc-700 mb-8 sm:mb-10"></div>
 
 
 
         <motion.section
           id="skills"
-          className="mb-16"
+          className="mb-12 sm:mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-stone-300">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-stone-300">
             Skills
           </h2>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-2 sm:gap-3">
             {allSkills.map((skill) => (
               <motion.button
                 key={skill}
@@ -487,7 +525,7 @@ const Portfolio = () => {
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                className="bg-zinc-900/20 border border-zinc-700 px-4 py-2 rounded-full text-base text-stone-300 hover:border-teal-900 hover:text-teal-700 transform transition-colors duration-300"
+                className="bg-zinc-900/20 border border-zinc-700 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-sm sm:text-base text-stone-300 hover:border-teal-900 hover:text-teal-700 transform transition-colors duration-300"
               >
                 {skill}
               </motion.button>
@@ -500,33 +538,33 @@ const Portfolio = () => {
         {/* Projects */}
         <motion.section
           id="projects"
-          className="mb-16"
+          className="mb-12 sm:mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-stone-300">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-stone-300">
             Projects
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {projects.map((project, index) => (
               <motion.a
                 key={index}
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block bg-zinc-900/20 border border-zinc-700 p-4 rounded-md transition-all duration-300 hover:border-teal-900 hover:text-lime-200 hover:scale-[1.01]"
+                className="block bg-zinc-900/20 border border-zinc-700 p-4 sm:p-5 rounded-md transition-all duration-300 hover:border-teal-900 hover:text-lime-200 hover:scale-[1.01]"
                 initial={{ opacity: 1 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <h3 className="text-lg font-bold mb-2 text-stone-300">
+                <h3 className="text-base sm:text-lg font-bold mb-2 text-stone-300 leading-tight">
                   {project.name}
                 </h3>
-                <p className="text-stone-300 text-sm mb-2">
+                <p className="text-stone-300 text-sm sm:text-base mb-2 leading-relaxed">
                   {project.description}
                 </p>
-                <div className="text-stone-500 text-sm">{project.year}</div>
+                <div className="text-stone-500 text-xs sm:text-sm">{project.year}</div>
               </motion.a>
             ))}
           </div>
