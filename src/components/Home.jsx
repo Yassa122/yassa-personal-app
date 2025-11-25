@@ -7,10 +7,6 @@ import {
   FaGithub,
   FaEnvelope,
   FaDownload,
-  FaServer,
-  FaLaptopCode,
-  FaAtom,
-  FaIndustry,
 } from 'react-icons/fa';
 import yassaPhoto from '../../src/components/logo/99081198.jpeg'; // adjust path as needed
 import { Link } from 'react-router-dom'; // for routing
