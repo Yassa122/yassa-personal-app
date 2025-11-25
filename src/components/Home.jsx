@@ -296,7 +296,8 @@ const Portfolio = () => {
     ],
   };
 
-  const allSkills = [...new Set([...experiences.flatMap(e => e.skills), ...bachelorThesis.skills])];
+  const allSkills = [...new Set(experiences.flatMap(e => e.skills)), ...bachelorThesis.skills,
+  ];
   // Smooth-scroll to the first element that carries the same data-skill
   const handleSkillClick = (skill) => {
     const target = document.querySelector(`[data-skill="${skill}"]`);
@@ -399,56 +400,63 @@ const Portfolio = () => {
         </motion.section>
 
         {/* Divider */}
-        <div className="w-full h-px bg-zinc-700 mb-8 sm:mb-10"></div>
-        <section id="experience" className="mb-12 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-stone-300">
+        <div className="w-full h-px bg-zinc-700 mb-10 "></div>
+        <section id="experience" className="mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-stone-300">
             Experience
           </h2>
 
-          {/* Timeline */}
-          <ul className="relative border-l-2 border-gray-700 pl-6 sm:pl-9 space-y-8 sm:space-y-12 pt-2">
+          {/* 1. Border lives here now: */}
+
+          <ul className="relative border-l-2 border-gray-700 pl-9 space-y-12 pt-4">
             {experiences.map((exp, idx) => (
               <li key={idx} className="relative">
-                {/* Timeline marker */}
+                {/* 2. Marker sits on the UL's line */}
                 <span
-                  className="absolute left-[-19px] sm:left-[-20px] top-2 w-3 h-3 bg-gray-400 rounded-full border-2 border-black"
+                  className="
+            absolute
+            left-[-42.8px]
+            top-2
+            w-3 h-3
+            bg-gray-400
+            rounded-full
+          "
                 ></span>
 
                 {/* Header row */}
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-0">
-                  <div className="min-w-0 flex-1">
-                    <h3 className="text-stone-100 font-semibold text-base sm:text-lg leading-tight">{exp.title}</h3>
-                    <p className="text-gray-400 text-xs sm:text-sm mt-0.5">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
+                  <div>
+                    <h3 className="text-stone-100 font-semibold">{exp.title}</h3>
+                    <p className="text-gray-400 text-sm">
                       {exp.company} &middot; {exp.type}
                     </p>
                   </div>
-                  <div className="mt-1 sm:mt-0 text-xs text-gray-400 whitespace-nowrap sm:ml-4">
+                  <div className="mt-1 sm:mt-0 text-xs text-gray-400">
                     <time>{exp.period}</time>
-                    <span className="hidden sm:inline"> &middot; {exp.duration}</span>
-                    <span className="sm:hidden block mt-0.5">{exp.duration}</span>
+                    <span> &middot; {exp.duration}</span>
                   </div>
                 </div>
 
                 {/* Location */}
-                <p className="text-gray-300 mt-1.5 text-xs sm:text-sm">{exp.location}</p>
+                <p className="text-gray-300 mt-1">{exp.location}</p>
 
                 {/* Bullets */}
                 {exp.bullets.length > 0 && (
-                  <ul className="list-disc list-inside mt-3 text-gray-300 space-y-1.5 text-sm sm:text-base">
+                  <ul className="list-disc list-inside mt-2 text-gray-300 space-y-1">
                     {exp.bullets.map((b, i2) => (
-                      <li key={i2} className="leading-relaxed">{b}</li>
+                      <li key={i2}>{b}</li>
                     ))}
                   </ul>
                 )}
 
                 {/* Skills */}
                 {exp.skills.length > 0 && (
-                  <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-3 sm:mt-4">
+                  <div className="flex flex-wrap gap-2 mt-3">
                     {exp.skills.map((s) => (
                       <span
                         key={s}
                         data-skill={s}
-                        className="bg-zinc-800/50 border border-zinc-700 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm text-gray-300"
+                        className="bg-zinc-800/50 border border-zinc-700 px-3 py-1 rounded-full text-sm text-gray-300"
                       >
                         {s}
                       </span>
@@ -463,35 +471,35 @@ const Portfolio = () => {
 
 
         {/* Divider */}
-        <div className="w-full h-px bg-zinc-700 mb-8 sm:mb-10"></div>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-stone-300">
+        <div className="w-full h-px bg-zinc-700 mb-10"></div>
+        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-stone-300">
           Bachelor Thesis Project
         </h2>
 
         <motion.section
           id="bachelor-thesis"
-          className="mb-12 sm:mb-16"
+          className="mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
           <Link to="/bachelor-thesis">
-            <div className="bg-zinc-900/30 border-l-4 border-gray-800 p-4 sm:p-5 hover:shadow-xl transition-all duration-300 hover:scale-[1.01] cursor-pointer">
-              <h3 className="text-base sm:text-lg font-bold mb-2 text-stone-300 leading-tight">
+            <div className="bg-zinc-900/30 border-l-4 border-gray-800 p-4 hover:shadow-xl transition-all duration-300 hover:scale-[1.01] cursor-pointer">
+              <h3 className="text-lg font-bold mb-2 text-stone-300">
                 {bachelorThesis.subject} ({bachelorThesis.year})
               </h3>
-              <p className="text-gray-300 text-sm sm:text-base mb-4 leading-relaxed">
+              <p className="text-gray-300 text-sm md:text-base mb-4">
                 {bachelorThesis.description}
               </p>
 
               {/* Skills */}
-              <div className="flex flex-wrap gap-1.5 sm:gap-2">
+              <div className="flex flex-wrap gap-2">
                 {bachelorThesis.skills.map((s) => (
                   <span
                     key={s}
                     data-skill={s}
-                    className="bg-zinc-800/50 border border-zinc-700 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm text-gray-300"
+                    className="bg-zinc-800/50 border border-zinc-700 px-3 py-1 rounded-full text-sm text-gray-300"
                   >
                     {s}
                   </span>
@@ -501,22 +509,22 @@ const Portfolio = () => {
           </Link>
         </motion.section>
 
-        <div className="w-full h-px bg-zinc-700 mb-8 sm:mb-10"></div>
+        <div className="w-full h-px bg-zinc-700 mb-10"></div>
 
 
 
         <motion.section
           id="skills"
-          className="mb-12 sm:mb-16"
+          className="mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-stone-300">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-stone-300">
             Skills
           </h2>
-          <div className="flex flex-wrap gap-2 sm:gap-3">
+          <div className="flex flex-wrap gap-3">
             {allSkills.map((skill) => (
               <motion.button
                 key={skill}
@@ -524,7 +532,7 @@ const Portfolio = () => {
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                className="bg-zinc-900/20 border border-zinc-700 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-sm sm:text-base text-stone-300 hover:border-teal-900 hover:text-teal-700 transform transition-colors duration-300"
+                className="bg-zinc-900/20 border border-zinc-700 px-4 py-2 rounded-full text-base text-stone-300 hover:border-teal-900 hover:text-teal-700 transform transition-colors duration-300"
               >
                 {skill}
               </motion.button>
@@ -537,33 +545,33 @@ const Portfolio = () => {
         {/* Projects */}
         <motion.section
           id="projects"
-          className="mb-12 sm:mb-16"
+          className="mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-stone-300">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-stone-300">
             Projects
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((project, index) => (
               <motion.a
                 key={index}
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block bg-zinc-900/20 border border-zinc-700 p-4 sm:p-5 rounded-md transition-all duration-300 hover:border-teal-900 hover:text-lime-200 hover:scale-[1.01]"
+                className="block bg-zinc-900/20 border border-zinc-700 p-4 rounded-md transition-all duration-300 hover:border-teal-900 hover:text-lime-200 hover:scale-[1.01]"
                 initial={{ opacity: 1 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <h3 className="text-base sm:text-lg font-bold mb-2 text-stone-300 leading-tight">
+                <h3 className="text-lg font-bold mb-2 text-stone-300">
                   {project.name}
                 </h3>
-                <p className="text-stone-300 text-sm sm:text-base mb-2 leading-relaxed">
+                <p className="text-stone-300 text-sm mb-2">
                   {project.description}
                 </p>
-                <div className="text-stone-500 text-xs sm:text-sm">{project.year}</div>
+                <div className="text-stone-500 text-sm">{project.year}</div>
               </motion.a>
             ))}
           </div>
