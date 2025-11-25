@@ -296,8 +296,7 @@ const Portfolio = () => {
     ],
   };
 
-  const allSkills = [...new Set(experiences.flatMap(e => e.skills)), ...bachelorThesis.skills,
-  ];
+  const allSkills = [...new Set([...experiences.flatMap(e => e.skills), ...bachelorThesis.skills])];
   // Smooth-scroll to the first element that carries the same data-skill
   const handleSkillClick = (skill) => {
     const target = document.querySelector(`[data-skill="${skill}"]`);
