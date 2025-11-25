@@ -12,7 +12,7 @@ import yassaPhoto from '../../src/components/logo/99081198.jpeg'; // adjust path
 import { Link } from 'react-router-dom'; // for routing
 
 const Portfolio = () => {
-  const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
+  const [setViewportWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     const handleResize = () => {
