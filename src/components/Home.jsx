@@ -26,6 +26,13 @@ const Portfolio = () => {
 
   const projects = [
     {
+      name: 'Intervyo - Tech Interview Prep',
+      description:
+        'Comprehensive tech interview preparation platform covering full-stack development, DevOps, cloud computing, AI/ML, data engineering, and system design. Features 64+ questions, interactive visualizations, live compiler, and detailed explanations for all experience levels.',
+      year: 2025,
+      link: 'https://intervyo.vercel.app/',
+    },
+    {
       name: 'Eco-Pallets Project',
       description:
         'A comprehensive platform for managing and purchasing eco-friendly plastic pallets, utilizing a microservice architecture to ensure scalability and reliability.',
@@ -85,6 +92,7 @@ const Portfolio = () => {
       period: 'Jul 2024 – Present',
       duration: 'Present',
       location: 'Cairo, Egypt · Hybrid',
+      link: 'https://www.vodafone.com/careers/',
       bullets: [
         'Contributed to enterprise-level order management solutions.',
         'Built backend & frontend features to improve functionality and UX.',
@@ -107,6 +115,7 @@ const Portfolio = () => {
       period: 'Feb 2024 – Jul 2024',
       duration: '6 mos',
       location: 'Cairo, Egypt · Hybrid',
+      link: 'https://www.vodafone.com/careers/',
       bullets: [
         'Contributed to enterprise-level order management solutions.',
         'Built backend & frontend features to improve functionality and UX.',
@@ -127,6 +136,7 @@ const Portfolio = () => {
       period: 'Sep 2025 – Present',
       duration: 'Present',
       location: 'Remote · U.A.E',
+      link: 'https://vixiai.co/',
       bullets: [
         'Developing AI-powered software solutions using Python and Node.js.',
         'Building and deploying applications with Firebase Functions and Services.',
@@ -150,6 +160,7 @@ const Portfolio = () => {
       period: 'Jun 2025 – Nov 2025',
       duration: '6 mos',
       location: 'Remote · Dubai, United Arab Emirates',
+      link: 'https://xylemsoftware.com',
       bullets: [
         'Developing software solutions and AI products using Next.js and Node.js.',
         'Building and deploying machine learning and deep learning models for various business needs.',
@@ -171,6 +182,7 @@ const Portfolio = () => {
       period: 'Oct 2024 – Sep 2025',
       duration: '1 yr',
       location: 'Cairo, Egypt · Hybrid',
+      link: 'https://trevi.app',
       bullets: [
         'Developed RESTful APIs and middleware for API development at Trevi.',
         'Implemented authentication, authorization, and data protection for enhanced security measures.',
@@ -192,6 +204,7 @@ const Portfolio = () => {
       period: 'Dec 2024 – Mar 2025',
       duration: '4 mos',
       location: 'United States · Remote',
+      link: 'https://mmsolutions.com',
       bullets: [
         'Led development of scalable software solutions.',
         'Provided technical guidance to ensure best practices & code quality.',
@@ -212,6 +225,7 @@ const Portfolio = () => {
       period: 'Jul 2024 – Dec 2024',
       duration: '6 mos',
       location: 'United States · Remote',
+      link: 'https://mmsoln.com',
       bullets: [
         'Built PHP/Laravel apps with HTML, CSS, Bootstrap & Tailwind for UX.',
         'Collaborated with cross-functional teams for seamless deployments.',
@@ -226,6 +240,7 @@ const Portfolio = () => {
       period: 'Aug 2024 – Oct 2024',
       duration: '3 mos',
       location: 'Cairo, Egypt · On-site',
+      link: 'https://kineticsgroup.co/',
       bullets: [
         'Worked with React.js, Node.js, Bootstrap, HTML & CSS to modernize UI.',
       ],
@@ -245,6 +260,7 @@ const Portfolio = () => {
       period: 'May 2023 – Oct 2023',
       duration: '6 mos',
       location: 'Remote',
+      link: 'https://www.fiverr.com',
       bullets: [
         'Designed custom web apps with high performance and intuitive UI.',
         'Built Python-based stock prediction apps (incl. Robinhood data).',
@@ -267,6 +283,7 @@ const Portfolio = () => {
       period: 'Jul 2022 – Sep 2022',
       duration: '3 mos',
       location: 'Remote',
+      link: 'https://instatus.com',
       bullets: [],
       skills: ['Next.js', 'GraphQL'],
     },
@@ -419,44 +436,97 @@ const Portfolio = () => {
           "
                 ></span>
 
-                {/* Header row */}
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
+                {/* Clickable experience card */}
+                {exp.link ? (
+                  <a
+                    href={exp.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block cursor-pointer group hover:bg-zinc-900/20 rounded-lg p-2 -m-2 transition-all duration-200"
+                  >
+                    {/* Header row */}
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
+                      <div>
+                        <h3 className="text-stone-100 font-semibold group-hover:text-teal-400 transition-colors">{exp.title}</h3>
+                        <p className="text-gray-400 text-sm">
+                          {exp.company} &middot; {exp.type}
+                        </p>
+                      </div>
+                      <div className="mt-1 sm:mt-0 text-xs text-gray-400">
+                        <time>{exp.period}</time>
+                        <span> &middot; {exp.duration}</span>
+                      </div>
+                    </div>
+
+                    {/* Location */}
+                    <p className="text-gray-300 mt-1">{exp.location}</p>
+
+                    {/* Bullets */}
+                    {exp.bullets.length > 0 && (
+                      <ul className="list-disc list-inside mt-2 text-gray-300 space-y-1">
+                        {exp.bullets.map((b, i2) => (
+                          <li key={i2}>{b}</li>
+                        ))}
+                      </ul>
+                    )}
+
+                    {/* Skills */}
+                    {exp.skills.length > 0 && (
+                      <div className="flex flex-wrap gap-2 mt-3">
+                        {exp.skills.map((s) => (
+                          <span
+                            key={s}
+                            data-skill={s}
+                            className="bg-zinc-800/50 border border-zinc-700 px-3 py-1 rounded-full text-sm text-gray-300"
+                          >
+                            {s}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </a>
+                ) : (
                   <div>
-                    <h3 className="text-stone-100 font-semibold">{exp.title}</h3>
-                    <p className="text-gray-400 text-sm">
-                      {exp.company} &middot; {exp.type}
-                    </p>
-                  </div>
-                  <div className="mt-1 sm:mt-0 text-xs text-gray-400">
-                    <time>{exp.period}</time>
-                    <span> &middot; {exp.duration}</span>
-                  </div>
-                </div>
+                    {/* Header row */}
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
+                      <div>
+                        <h3 className="text-stone-100 font-semibold">{exp.title}</h3>
+                        <p className="text-gray-400 text-sm">
+                          {exp.company} &middot; {exp.type}
+                        </p>
+                      </div>
+                      <div className="mt-1 sm:mt-0 text-xs text-gray-400">
+                        <time>{exp.period}</time>
+                        <span> &middot; {exp.duration}</span>
+                      </div>
+                    </div>
 
-                {/* Location */}
-                <p className="text-gray-300 mt-1">{exp.location}</p>
+                    {/* Location */}
+                    <p className="text-gray-300 mt-1">{exp.location}</p>
 
-                {/* Bullets */}
-                {exp.bullets.length > 0 && (
-                  <ul className="list-disc list-inside mt-2 text-gray-300 space-y-1">
-                    {exp.bullets.map((b, i2) => (
-                      <li key={i2}>{b}</li>
-                    ))}
-                  </ul>
-                )}
+                    {/* Bullets */}
+                    {exp.bullets.length > 0 && (
+                      <ul className="list-disc list-inside mt-2 text-gray-300 space-y-1">
+                        {exp.bullets.map((b, i2) => (
+                          <li key={i2}>{b}</li>
+                        ))}
+                      </ul>
+                    )}
 
-                {/* Skills */}
-                {exp.skills.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mt-3">
-                    {exp.skills.map((s) => (
-                      <span
-                        key={s}
-                        data-skill={s}
-                        className="bg-zinc-800/50 border border-zinc-700 px-3 py-1 rounded-full text-sm text-gray-300"
-                      >
-                        {s}
-                      </span>
-                    ))}
+                    {/* Skills */}
+                    {exp.skills.length > 0 && (
+                      <div className="flex flex-wrap gap-2 mt-3">
+                        {exp.skills.map((s) => (
+                          <span
+                            key={s}
+                            data-skill={s}
+                            className="bg-zinc-800/50 border border-zinc-700 px-3 py-1 rounded-full text-sm text-gray-300"
+                          >
+                            {s}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 )}
 
