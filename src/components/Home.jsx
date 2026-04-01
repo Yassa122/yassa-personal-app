@@ -1,6 +1,6 @@
 // src/components/Portfolio.jsx
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import {
   FaLinkedin,
@@ -12,18 +12,6 @@ import yassaPhoto from '../../src/components/logo/99081198.jpeg'; // adjust path
 import { Link } from 'react-router-dom'; // for routing
 
 const Portfolio = () => {
-  const [setViewportWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setViewportWidth(window.innerWidth);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
   const projects = [
     {
       name: 'Intervyo - Tech Interview Prep',
@@ -108,27 +96,6 @@ const Portfolio = () => {
       ],
     },
     {
-      title: 'Intern Software Engineer',
-      company: 'Vodafone Intelligent Solutions (VOIS)',
-      type: 'Internship', 
-      period: 'Feb 2025 – Jul 2025',
-      duration: '6 mos',
-      location: 'Cairo, Egypt · Hybrid',
-      link: 'https://www.vodafone.com/careers/',
-      bullets: [
-        'Contributed to backend Web API enhancements and Angular UI refinements.',
-        'Improved p95 response times for critical endpoints through query optimization.',
-        'Implemented unit tests and participated in peer code reviews.',
-      ],
-      skills: [
-        'ASP.NET Web API',
-        'Angular',
-        'N-Tier Architecture',
-        'Git',
-        'Ticketing Systems',
-      ],
-    },
-    {
       title: 'AI Software Engineer',
       company: 'VIXI AI',
       type: 'Full-time',
@@ -172,6 +139,27 @@ const Portfolio = () => {
         'Analytics',
         'Caching',
         'SQL',
+      ],
+    },
+    {
+      title: 'Intern Software Engineer',
+      company: 'Vodafone Intelligent Solutions (VOIS)',
+      type: 'Internship', 
+      period: 'Feb 2025 – Jul 2025',
+      duration: '6 mos',
+      location: 'Cairo, Egypt · Hybrid',
+      link: 'https://www.vodafone.com/careers/',
+      bullets: [
+        'Contributed to backend Web API enhancements and Angular UI refinements.',
+        'Improved p95 response times for critical endpoints through query optimization.',
+        'Implemented unit tests and participated in peer code reviews.',
+      ],
+      skills: [
+        'ASP.NET Web API',
+        'Angular',
+        'N-Tier Architecture',
+        'Git',
+        'Ticketing Systems',
       ],
     },
     {
@@ -291,8 +279,7 @@ const Portfolio = () => {
     ],
   };
 
-  const allSkills = [...new Set(experiences.flatMap(e => e.skills)), ...bachelorThesis.skills,
-  ];
+  const allSkills = [...new Set([...experiences.flatMap(e => e.skills), ...bachelorThesis.skills])];
   // Smooth-scroll to the first element that carries the same data-skill
   const handleSkillClick = (skill) => {
     const target = document.querySelector(`[data-skill="${skill}"]`);
