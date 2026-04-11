@@ -11,7 +11,7 @@ function About() {
     height: 350,
     position: "absolute",
     top: 100,
-    bottom: 20,
+    bottom: 20, 
   }; 
 
   // Styles for the second Lottie animation
