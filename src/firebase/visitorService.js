@@ -81,7 +81,9 @@ export const saveVisitor = async (visitorData) => {
             return { success: true, visitorId: docRef.id, isNew: true };
         }
     } catch (error) {
-        console.error('Error saving visitor:', error);
+        if (error?.code !== 'permission-denied') {
+            console.error('Error saving visitor:', error);
+        }
         return { success: false, error: error.message };
     }
 };

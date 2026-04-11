@@ -170,6 +170,10 @@ const VisitorTracker = () => {
           console.warn('Server IP collection failed:', r.status, r.statusText);
           return {};
         }
+        const contentType = r.headers.get('content-type') || '';
+        if (!contentType.includes('application/json')) {
+          return {};
+        }
         const data = await r.json();
         console.log('Server IP data:', data);
         return data;
