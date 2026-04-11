@@ -12,7 +12,7 @@ function About() {
     position: "absolute",
     top: 100,
     bottom: 20,
-  };
+  }; 
 
   // Styles for the second Lottie animation
   const secondAnimationStyle = {
