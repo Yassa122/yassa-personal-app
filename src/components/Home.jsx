@@ -279,6 +279,23 @@ const Portfolio = () => {
     ],
   };
 
+  const publications = [
+    {
+      title:
+        'MoleculeX-Predictive: An augmentation of transformers with explainable AI and knowledge layers for efficient drug property prediction',
+      venue: 'Array (Elsevier)',
+      status: 'In Press, Journal Pre-proof',
+      date: 'Available online 21 April 2026',
+      doi: '10.1016/j.array.2026.100820',
+      link: 'https://doi.org/10.1016/j.array.2026.100820',
+      authors: 'Yassa Ashraf, Daniel Sameh, John Zaki, Amal Aboulhassan',
+      badge: 'Featured Research',
+      summary:
+        'Knowledge-augmented ChemBERTa with SHAP, LIME, and Integrated Gradients for accurate and explainable drug property prediction.',
+      metrics: ['pIC50 R2: 0.92', '85% Pharmacophore Identification', 'Open Access'],
+    },
+  ];
+
   const allSkills = [...new Set([...experiences.flatMap(e => e.skills), ...bachelorThesis.skills])];
   // Smooth-scroll to the first element that carries the same data-skill
   const handleSkillClick = (skill) => {
@@ -542,6 +559,57 @@ const Portfolio = () => {
               </div>
             </div>
           </Link>
+        </motion.section>
+
+        <div className="w-full h-px bg-zinc-700 mb-10"></div>
+
+        <motion.section
+          id="publications"
+          className="mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-stone-300">
+            Publications
+          </h2>
+          <div className="space-y-4">
+            {publications.map((publication, index) => (
+              <motion.a
+                key={index}
+                href={publication.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-gradient-to-br from-zinc-900/70 to-zinc-900/20 border border-zinc-700 p-5 rounded-md transition-all duration-300 hover:border-teal-600 hover:shadow-[0_0_24px_rgba(45,212,191,0.15)] hover:scale-[1.01]"
+                initial={{ opacity: 1 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <div className="inline-flex items-center rounded-full border border-teal-700/50 bg-teal-900/20 px-3 py-1 text-xs text-teal-300 mb-3">
+                  {publication.badge}
+                </div>
+                <h3 className="text-lg md:text-xl font-bold mb-2 text-stone-300">
+                  {publication.title}
+                </h3>
+                <p className="text-sm text-stone-300 mb-3">{publication.summary}</p>
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {publication.metrics.map((item) => (
+                    <span
+                      key={item}
+                      className="bg-zinc-800/60 border border-zinc-700 px-2.5 py-1 rounded-full text-xs text-stone-300"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+                <p className="text-sm text-stone-400 mb-1">{publication.venue}</p>
+                <p className="text-sm text-stone-400 mb-1">{publication.status}</p>
+                <p className="text-sm text-stone-400 mb-3">{publication.date}</p>
+                <p className="text-sm text-stone-300 mb-2">{publication.authors}</p>
+                <p className="text-sm text-teal-400 font-medium">Read paper: DOI {publication.doi}</p>
+              </motion.a>
+            ))}
+          </div>
         </motion.section>
 
         <div className="w-full h-px bg-zinc-700 mb-10"></div>
