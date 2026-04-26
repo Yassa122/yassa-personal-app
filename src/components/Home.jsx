@@ -284,15 +284,15 @@ const Portfolio = () => {
       title:
         'MoleculeX-Predictive: An augmentation of transformers with explainable AI and knowledge layers for efficient drug property prediction',
       venue: 'Array (Elsevier)',
-      status: 'In Press, Journal Pre-proof',
-      date: 'Available online 21 April 2026',
+      status: 'Published · Volume 30',
+      date: 'July 2026 · Open Access',
       doi: '10.1016/j.array.2026.100820',
       link: 'https://doi.org/10.1016/j.array.2026.100820',
       authors: 'Yassa Ashraf, Daniel Sameh, John Zaki, Amal Aboulhassan',
       badge: 'Featured Research',
       summary:
-        'Knowledge-augmented ChemBERTa with SHAP, LIME, and Integrated Gradients for accurate and explainable drug property prediction.',
-      metrics: ['pIC50 R2: 0.92', '85% Pharmacophore Identification', 'Open Access'],
+        'A knowledge-augmented ChemBERTa framework that combines high-accuracy molecular property prediction with transparent multi-modal explainability.',
+      metrics: ['pIC50 R2: 0.918', '85% Pharmacophore Identification', 'Scaffold-Based Validation'],
     },
   ];
 
