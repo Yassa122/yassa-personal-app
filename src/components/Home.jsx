@@ -9,7 +9,8 @@ import {
   FaDownload,
 } from 'react-icons/fa';
 import yassaPhoto from '../../src/components/logo/99081198.jpeg'; // adjust path as needed
-import { Link } from 'react-router-dom'; // for routing
+import { Link } from 'react-router-dom';
+import GitHubContributions from './GitHubContributions';
 
 const Portfolio = () => {
   const projects = [
@@ -399,7 +400,10 @@ const Portfolio = () => {
         </motion.section>
 
         {/* Divider */}
-        <div className="w-full h-px bg-zinc-700 mb-10 "></div>
+        <motion.div className="w-full h-px bg-zinc-700 mb-10" />
+        <GitHubContributions />
+
+        <motion.div className="w-full h-px bg-zinc-700 mb-10" />
         <section id="experience" className="mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-8 text-stone-300">
             Experience
