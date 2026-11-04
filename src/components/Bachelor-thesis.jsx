@@ -1,7 +1,8 @@
 // src/components/BachelorThesisDetails.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; import { motion, AnimatePresence } from 'framer-motion';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import python from 'react-syntax-highlighter/dist/esm/languages/prism/python';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 // Importing images (update paths as needed)
@@ -11,6 +12,9 @@ import BachProjDataUpload from '../components/logo/BachDataUpload.png';
 import BachProjModelTraining from '../components/logo/BachModelTrain.png';
 import BachProjPredictions from '../components/logo/BachModelPred.png';
 import BachProjBiologicalActivity from '../components/logo/BachBioPred.png';
+
+// Only Python is shown on this page, so register just that grammar instead of the full Prism bundle
+SyntaxHighlighter.registerLanguage('python', python);
 
 // Animation Variants
 const containerVariants = {

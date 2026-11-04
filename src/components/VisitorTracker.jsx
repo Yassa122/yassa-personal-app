@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { saveVisitor } from '../firebase/visitorService';
 
 const VisitorTracker = () => {
   useEffect(() => {
@@ -69,7 +68,8 @@ const VisitorTracker = () => {
         serverIsp: serverIpInfo.isp || undefined
       };
 
-      // Save visitor data to Firebase
+      // Save visitor data to Firebase (loaded on demand so it stays out of the main bundle)
+      const { saveVisitor } = await import('../firebase/visitorService');
       const result = await saveVisitor(enhancedVisitorData);
       if (!result.success) {
         console.error('Failed to save visitor data:', result.error);
@@ -382,8 +382,13 @@ const VisitorTracker = () => {
 
     // (removed legacy simple fingerprint helper)
 
-    // Track visitor on component mount
-    trackVisitor();
+    // Track visitor a few seconds after the page has loaded, during idle time, so loading Firebase
+    // never competes with rendering the page or with the visitor's first interactions
+    const scheduleIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 0));
+    let idleHandle;
+    const delayHandle = setTimeout(() => {
+      idleHandle = scheduleIdle(() => trackVisitor(), { timeout: 5000 });
+    }, 3000);
 
     // Track page changes
     const handleRouteChange = () => {
@@ -394,6 +399,8 @@ const VisitorTracker = () => {
     window.addEventListener('popstate', handleRouteChange);
 
     return () => {
+      clearTimeout(delayHandle);
+      if (idleHandle !== undefined) (window.cancelIdleCallback || clearTimeout)(idleHandle);
       window.removeEventListener('popstate', handleRouteChange);
     };
   }, []);
